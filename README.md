@@ -151,13 +151,13 @@ ps.bat
 ### Development environment
 Execute the following commands to setup the development environment. Notice that `docker` is required
 
-`make build`
-`make up`
-`make install`
+- `make build`
+- `make up`
+- `make install`
 
 To access to the `docker` container
 
-`make bash`
+- `make bash`
 
 ### Initial configuration
 - Execute the following command to pass the `testThirtyDays`
