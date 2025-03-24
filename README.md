@@ -175,3 +175,12 @@ The command would add the needed fixture at `tests/approvals/ApprovalTest.testTh
 [0] -> foo, -1, 0
 
 ```
+
+Original coverage:
+    - Item.php -> 100%
+    - GildedRose -> 38.46%
+    
+### Refactor strategy
+- First of all, some unit tests would be created following the `GildedRoseRequirements.md`
+- Once the tests have been created, it will be checked whether the code has been 100% covered. Otherwise, more unit test would be added to reach the 100%
+- No refactor would be applied up until all the unit tests have been implemented to guarantee the correctness of the current business logic before start the changes on the code :)
