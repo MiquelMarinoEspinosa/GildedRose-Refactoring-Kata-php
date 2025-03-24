@@ -6,7 +6,7 @@ build:
 up:
 	docker run --rm -i -t -d --name app.php-cli -v .:/app --add-host "host.docker.internal:host-gateway" app/php-cli 
 
-stop:
+down:
 	docker stop app.php-cli
 
 shell:
