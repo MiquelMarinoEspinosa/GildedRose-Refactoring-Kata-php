@@ -1,3 +1,5 @@
+SH_PHP=docker exec -i -t app.php-cli
+
 build:
 	docker build etc/devel/docker/php-cli -t app/php-cli
 
@@ -7,5 +9,5 @@ up:
 stop:
 	docker stop app.php-cli
 
-bash:
-	docker exec -i -t app.php-cli sh
+shell:
+	$(SH_PHP) sh
