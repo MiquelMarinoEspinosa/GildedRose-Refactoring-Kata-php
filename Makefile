@@ -11,3 +11,6 @@ stop:
 
 shell:
 	$(SH_PHP) sh
+
+install:
+	$(SH_PHP) composer install

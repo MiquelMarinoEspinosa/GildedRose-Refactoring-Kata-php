@@ -146,3 +146,32 @@ ps.bat
 ```
 
 **Happy coding**!
+
+## Refactor
+### Development environment
+Execute the following commands to setup the development environment. Notice that `docker` is required
+
+`make build`
+`make up`
+`make install`
+
+To access to the `docker` container
+
+`make bash`
+
+### Initial configuration
+- Execute the following command to pass the `testThirtyDays`
+
+```
+php ./fixtures/texttest_fixture.php 30 > tests/approval
+s/ApprovalTest.testThirtyDays.approved.txt
+```
+
+The command would add the needed fixture at `tests/approvals/ApprovalTest.testThirtyDays.approved.txt` to compare it with the test output
+
+- Add the following lines at `tests/approvals/ApprovalTest.testFoo.approved.txt` to pass the `testFoo`
+
+```
+[0] -> foo, -1, 0
+
+```

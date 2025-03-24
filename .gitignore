@@ -5,3 +5,6 @@
 /.phpunit.result.cache
 /composer.lock
 /composer.phar
+/tests/approvals
+/coverage
+/.vscode
