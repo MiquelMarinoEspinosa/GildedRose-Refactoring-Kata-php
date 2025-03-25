@@ -204,3 +204,7 @@ Original coverage:
     - Pending refactors for next iteration
         - Extract item creation and update logic execution into a private method
         - Extract multiple assertions into a private method
+        - Consider a data provider!
+- Add unit tests for sell by date has passed
+    - When `quality` is `0` does not decrease the `quality`
+    - When `quality` is `1` decreases the `quality` down to `0`
