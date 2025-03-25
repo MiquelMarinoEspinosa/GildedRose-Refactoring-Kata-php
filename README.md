@@ -208,3 +208,6 @@ Original coverage:
 - Add unit tests for sell by date has passed
     - When `quality` is `0` does not decrease the `quality`
     - When `quality` is `1` decreases the `quality` down to `0`
+- Refactor tests
+    - `DataProvider` approach discarded because it would decrease test class clarity
+    - Extract item creation and update into a new private method called `updateItem`

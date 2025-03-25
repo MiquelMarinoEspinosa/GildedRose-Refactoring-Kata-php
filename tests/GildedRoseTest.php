@@ -12,7 +12,7 @@ final class GildedRoseTest extends TestCase
 {
     private const STANDARD_ITEM_NAME = 'standard';
     private const MINIMUM_QUALITY = 0;
-
+    
     public function testGivenStandardItemWhenQualityIsGreaterThanZeroThenBothSellAndQualityDecreaseOne(): void
     {
         $currentItemName = self::STANDARD_ITEM_NAME;
@@ -35,10 +35,13 @@ final class GildedRoseTest extends TestCase
         $currentItemName = self::STANDARD_ITEM_NAME;
         $currentItemSellIn = 0;
         $currentItemQuality = self::MINIMUM_QUALITY;
-        $item = new Item($currentItemName, $currentItemSellIn, $currentItemQuality);
-        $items = [$item];
-        $gildedRose = new GildedRose($items);
-        $gildedRose->updateQuality();
+        
+        $item = $this->updateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
         $expectedItemName = self::STANDARD_ITEM_NAME;
         $expectedItemSellIn = -1;
         $expectedItemQuality = self::MINIMUM_QUALITY;
@@ -52,10 +55,13 @@ final class GildedRoseTest extends TestCase
         $currentItemName = self::STANDARD_ITEM_NAME;
         $currentItemSellIn = -1;
         $currentItemQuality = 2;
-        $item = new Item($currentItemName, $currentItemSellIn, $currentItemQuality);
-        $items = [$item];
-        $gildedRose = new GildedRose($items);
-        $gildedRose->updateQuality();
+
+        $item = $this->updateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+
         $expectedItemName = self::STANDARD_ITEM_NAME;
         $expectedItemSellIn = -2;
         $expectedItemQuality = self::MINIMUM_QUALITY;
@@ -69,10 +75,13 @@ final class GildedRoseTest extends TestCase
         $currentItemName = self::STANDARD_ITEM_NAME;
         $currentItemSellIn = -1;
         $currentItemQuality = 0;
-        $item = new Item($currentItemName, $currentItemSellIn, $currentItemQuality);
-        $items = [$item];
-        $gildedRose = new GildedRose($items);
-        $gildedRose->updateQuality();
+
+        $item = $this->updateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
         $expectedItemName = self::STANDARD_ITEM_NAME;
         $expectedItemSellIn = -2;
         $expectedItemQuality = self::MINIMUM_QUALITY;
@@ -86,15 +95,33 @@ final class GildedRoseTest extends TestCase
         $currentItemName = self::STANDARD_ITEM_NAME;
         $currentItemSellIn = -1;
         $currentItemQuality = 1;
-        $item = new Item($currentItemName, $currentItemSellIn, $currentItemQuality);
-        $items = [$item];
-        $gildedRose = new GildedRose($items);
-        $gildedRose->updateQuality();
+        
+        $item = $this->updateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
         $expectedItemName = self::STANDARD_ITEM_NAME;
         $expectedItemSellIn = -2;
         $expectedItemQuality = self::MINIMUM_QUALITY;
+        
         $this->assertSame($expectedItemName, $item->name);
         $this->assertSame($expectedItemSellIn, $item->sellIn);
         $this->assertSame($expectedItemQuality, $item->quality);
+    }
+
+    private function updateItem(
+        string $itemName,
+        int $itemSellIn,
+        int $itemQuality
+    ): Item {
+        $item = new Item($itemName, $itemSellIn, $itemQuality);
+        $items = [$item];
+        
+        $gildedRose = new GildedRose($items);
+        $gildedRose->updateQuality();
+
+        return $item;
     }
 }
