@@ -186,4 +186,7 @@ Original coverage:
 - No refactor would be applied up until all the unit tests have been implemented to guarantee the correctness of the current business logic before start the changes on the code :)
 
 #### Test strategy
-- Modify `GildedRoseTest foo` test to provide more readibility to the test and to check `sellIn` and `quality` modifications
+- Follow the `GildedRoseRequirements.md` rather than focusing on the current `GildedRose` class implementation to create the needed unit tests to cover the business logic explained at the requirements document 
+- Modify `GildedRoseTest foo` test to provide more readibility to the test and to check `sellIn` and `quality` update when `quality` is `0`
+- Create unit test to check the logic when the `sellIn` has not passed and `quality` is greather than `0`
+
