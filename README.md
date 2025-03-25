@@ -189,4 +189,8 @@ Original coverage:
 - Follow the `GildedRoseRequirements.md` rather than focusing on the current `GildedRose` class implementation to create the needed unit tests to cover the business logic explained at the requirements document 
 - Modify `GildedRoseTest foo` test to provide more readibility to the test and to check `sellIn` and `quality` update when `quality` is `0`
 - Create unit test to check the logic when the `sellIn` has not passed and `quality` is greather than `0`
-
+- Refactor the tests
+    - Extract item into a variable to facilitate the asserts
+    - Extract strings into constants
+    - Extract the standard item construction into a method to inhance reusability
+    - Extrat minimum quality into a constant to improve readibility

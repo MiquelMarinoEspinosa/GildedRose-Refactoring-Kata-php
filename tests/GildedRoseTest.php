@@ -10,23 +10,39 @@ use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
 {
+    private const STANDARD_ITEM_NAME = 'standard';
+    private const MINIMUM_QUALITY = 0;
+
     public function testGivenStandardItemWhenQualityIsGreaterThanZeroThenBothSellAndQualityDecreaseOne(): void
     {
-        $items = [new Item('standard', 0, 1)];
+        $item = $this->buildStandardItem(0, 1);
+        $items = [$item];
         $gildedRose = new GildedRose($items);
         $gildedRose->updateQuality();
-        $this->assertSame('standard', $items[0]->name);
-        $this->assertSame(-1, $items[0]->sellIn);
-        $this->assertSame(0, $items[0]->quality);
+        $this->assertSame(self::STANDARD_ITEM_NAME, $item->name);
+        $this->assertSame(-1, $item->sellIn);
+        $this->assertSame(self::MINIMUM_QUALITY, $item->quality);
     }
     
     public function testGivenStandardItemWhenQualityIsZeroThenSellInDecreasesOneAndQualityReamainsZero(): void
     {
-        $items = [new Item('standard', 0, 0)];
+        $item = $this->buildStandardItem(0, self::MINIMUM_QUALITY);
+        $items = [$item];
         $gildedRose = new GildedRose($items);
         $gildedRose->updateQuality();
-        $this->assertSame('standard', $items[0]->name);
-        $this->assertSame(-1, $items[0]->sellIn);
-        $this->assertSame(0, $items[0]->quality);
+        $this->assertSame(self::STANDARD_ITEM_NAME, $item->name);
+        $this->assertSame(-1, $item->sellIn);
+        $this->assertSame(self::MINIMUM_QUALITY, $item->quality);
+    }
+
+    private function buildStandardItem(
+        int $sellIn,
+        int $quality
+    ): Item {
+        return new Item(
+            self::STANDARD_ITEM_NAME,
+            $sellIn,
+            $quality
+        );
     }
 }
