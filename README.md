@@ -184,3 +184,6 @@ Original coverage:
 - First of all, some unit tests would be created following the `GildedRoseRequirements.md`
 - Once the tests have been created, it will be checked whether the code has been 100% covered. Otherwise, more unit test would be added to reach the 100%
 - No refactor would be applied up until all the unit tests have been implemented to guarantee the correctness of the current business logic before start the changes on the code :)
+
+#### Test strategy
+- Modify `GildedRoseTest foo` test to provide more readibility to the test and to check `sellIn` and `quality` modifications
