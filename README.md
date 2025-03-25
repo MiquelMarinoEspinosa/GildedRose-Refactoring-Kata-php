@@ -196,3 +196,11 @@ Original coverage:
     - Extract the standard item construction into a method to inhance reusability
     - Extrat minimum quality into a constant to improve readibility
 - Unit test for `Once the sell by date has passed, Quality degrades twice as fast`
+- Refactor the tests
+    - Extract current `sellIn` and `quality` magic values into local `variables`
+    - Extract expectations also into local variables
+    - Extract `update qualite method
+    - Remove `buildStandardItem` to promote other refactors
+    - Pending refactors for next iteration
+        - Extract item creation and update logic execution into a private method
+        - Extract multiple assertions into a private method

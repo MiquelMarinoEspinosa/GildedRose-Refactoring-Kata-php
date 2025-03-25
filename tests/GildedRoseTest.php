@@ -15,45 +15,52 @@ class GildedRoseTest extends TestCase
 
     public function testGivenStandardItemWhenQualityIsGreaterThanZeroThenBothSellAndQualityDecreaseOne(): void
     {
-        $item = $this->buildStandardItem(0, 1);
+        $currentItemName = self::STANDARD_ITEM_NAME;
+        $currentItemSellIn = 0;
+        $currentItemQuality = 1;
+        $item = new Item($currentItemName, $currentItemSellIn, $currentItemQuality);
         $items = [$item];
         $gildedRose = new GildedRose($items);
         $gildedRose->updateQuality();
-        $this->assertSame(self::STANDARD_ITEM_NAME, $item->name);
-        $this->assertSame(-1, $item->sellIn);
-        $this->assertSame(self::MINIMUM_QUALITY, $item->quality);
+        $expectedItemName = self::STANDARD_ITEM_NAME;
+        $expectedItemSellIn = -1;
+        $expectedItemQuality = self::MINIMUM_QUALITY;
+        $this->assertSame($expectedItemName, $item->name);
+        $this->assertSame($expectedItemSellIn, $item->sellIn);
+        $this->assertSame($expectedItemQuality, $item->quality);
     }
     
     public function testGivenStandardItemWhenQualityIsZeroThenSellInDecreasesOneAndQualityReamainsZero(): void
     {
-        $item = $this->buildStandardItem(0, self::MINIMUM_QUALITY);
+        $currentItemName = self::STANDARD_ITEM_NAME;
+        $currentItemSellIn = 0;
+        $currentItemQuality = self::MINIMUM_QUALITY;
+        $item = new Item($currentItemName, $currentItemSellIn, $currentItemQuality);
         $items = [$item];
         $gildedRose = new GildedRose($items);
         $gildedRose->updateQuality();
-        $this->assertSame(self::STANDARD_ITEM_NAME, $item->name);
-        $this->assertSame(-1, $item->sellIn);
-        $this->assertSame(self::MINIMUM_QUALITY, $item->quality);
+        $expectedItemName = self::STANDARD_ITEM_NAME;
+        $expectedItemSellIn = -1;
+        $expectedItemQuality = self::MINIMUM_QUALITY;
+        $this->assertSame($expectedItemName, $item->name);
+        $this->assertSame($expectedItemSellIn, $item->sellIn);
+        $this->assertSame($expectedItemQuality, $item->quality);
     }
 
     public function testGivenStandardItemWhenTheSellInHasPassedThenQualityDegradesTwiceAsFast(): void
     {
-        $item = $this->buildStandardItem(-1, 2);
+        $currentItemName = self::STANDARD_ITEM_NAME;
+        $currentItemSellIn = -1;
+        $currentItemQuality = 2;
+        $item = new Item($currentItemName, $currentItemSellIn, $currentItemQuality);
         $items = [$item];
         $gildedRose = new GildedRose($items);
         $gildedRose->updateQuality();
-        $this->assertSame(self::STANDARD_ITEM_NAME, $item->name);
-        $this->assertSame(-2, $item->sellIn);
-        $this->assertSame(0, $item->quality);
-    }
-
-    private function buildStandardItem(
-        int $sellIn,
-        int $quality
-    ): Item {
-        return new Item(
-            self::STANDARD_ITEM_NAME,
-            $sellIn,
-            $quality
-        );
+        $expectedItemName = self::STANDARD_ITEM_NAME;
+        $expectedItemSellIn = -2;
+        $expectedItemQuality = self::MINIMUM_QUALITY;
+        $this->assertSame($expectedItemName, $item->name);
+        $this->assertSame($expectedItemSellIn, $item->sellIn);
+        $this->assertSame($expectedItemQuality, $item->quality);
     }
 }
