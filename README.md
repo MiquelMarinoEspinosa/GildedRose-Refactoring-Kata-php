@@ -210,4 +210,12 @@ Original coverage:
     - When `quality` is `1` decreases the `quality` down to `0`
 - Refactor tests
     - `DataProvider` approach discarded because it would decrease test class clarity
-    - Extract item creation and update into a new private method called `updateItem`
+    - Extract item creation and update into a new private method called `whenUpdateItem`
+    - Extract assertions code into a private method called `thenItemHasBeenUpdatedAsExpected`
+    - Notice that the new 2 private methods as well as the tests names follow the `GivenWhenThen` notation
+    - Notice also that the 2 refactors have been pushed in independent commits
+- So far these 2 requirements have been covered by the current tests
+    - Once the sell by date has passed, Quality degrades twice as fast
+    - The Quality of an item is never negative
+- Next step, test the new requirement in the list
+    - "Aged Brie" actually increases in Quality the older it gets
