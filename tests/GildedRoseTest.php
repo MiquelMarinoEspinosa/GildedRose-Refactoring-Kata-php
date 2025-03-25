@@ -35,6 +35,17 @@ class GildedRoseTest extends TestCase
         $this->assertSame(self::MINIMUM_QUALITY, $item->quality);
     }
 
+    public function testGivenStandardItemWhenTheSellInHasPassedThenQualityDegradesTwiceAsFast(): void
+    {
+        $item = $this->buildStandardItem(-1, 2);
+        $items = [$item];
+        $gildedRose = new GildedRose($items);
+        $gildedRose->updateQuality();
+        $this->assertSame(self::STANDARD_ITEM_NAME, $item->name);
+        $this->assertSame(-2, $item->sellIn);
+        $this->assertSame(0, $item->quality);
+    }
+
     private function buildStandardItem(
         int $sellIn,
         int $quality

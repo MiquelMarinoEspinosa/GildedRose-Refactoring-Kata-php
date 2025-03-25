@@ -186,7 +186,8 @@ Original coverage:
 - No refactor would be applied up until all the unit tests have been implemented to guarantee the correctness of the current business logic before start the changes on the code :)
 
 #### Test strategy
-- Follow the `GildedRoseRequirements.md` rather than focusing on the current `GildedRose` class implementation to create the needed unit tests to cover the business logic explained at the requirements document 
+- Follow the `GildedRoseRequirements.md` rather than focusing on the current `GildedRose` class implementation to create the needed unit tests to cover the business logic explained at the requirements document
+- Every time that a test has succesfully been tested, the test would be analyze to see whether the test class can be refactored somehow
 - Modify `GildedRoseTest foo` test to provide more readibility to the test and to check `sellIn` and `quality` update when `quality` is `0`
 - Create unit test to check the logic when the `sellIn` has not passed and `quality` is greather than `0`
 - Refactor the tests
@@ -194,3 +195,4 @@ Original coverage:
     - Extract strings into constants
     - Extract the standard item construction into a method to inhance reusability
     - Extrat minimum quality into a constant to improve readibility
+- Unit test for `Once the sell by date has passed, Quality degrades twice as fast`
