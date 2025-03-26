@@ -234,3 +234,16 @@ Original coverage:
     - First the current coverage for the `GildedRose` class would be checked
         - In case that it is not 100%, new unit tests would be added to finalize the coverage
     - Once has been checked that the class has been fully covered by unit tests, branches would be created from this one to apply the refactors and eventually add the required new logic for the `Conjured` product
+- The `GildedRose` has `100%` coverage ^_^. Notice that the unit tests have been implemented without looking at the code logic, just using as guide the requirements explained at the `GildedRoseRequirements.md`
+- Ready to start the refactor |:D
+
+#### Refactor
+- A new branch would be created called `refactor-quick-wins`
+- Eventually, the unit test class would be refactor to use `data provider`. It feels like a cleaner solution than the current one
+- Quick wins would be applied and the logic decoubled by items at the same very class
+- Once the logic has been decoupled, there are a couple of ideas to refactor and place the item's logic to its own classes
+        - `strategy pattern`
+        - `polimorfysm` without altering the `Item` class
+        - For each solution, a new branch would be added
+- Eventually the new logic would be added
+    - In a real case scenario it could be that there is some urgency to add this logic. Then, once the tests have been finished, I would use the current code to very quick adding the new logic in the legacy code. I would follow a TDD approach. I might do this approach in a different branch also. The inconvinient of this approach is that the refactor should be left for further iterations with the risk of never doing it. Is the developer and team responsability to push further on paying this technical debt at some point in the nearest future
