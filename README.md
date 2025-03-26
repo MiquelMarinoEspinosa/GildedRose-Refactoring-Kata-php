@@ -219,3 +219,7 @@ Original coverage:
     - The Quality of an item is never negative
 - Next step, test the new requirement in the list
     - "Aged Brie" actually increases in Quality the older it gets
+    - It has been found that when "Aged Brie" `sellIn` has passed, the `quality` increases by `2`. Covered already with a test
+- Refactor step
+    - Extract `Aged Brie` name into a constant
+    - Refactor `MINIMUM_QUALITY` constant in to `MINIMUM_ITEM_QUALITY` fro the sake of readability

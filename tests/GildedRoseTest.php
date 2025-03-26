@@ -10,10 +10,11 @@ use PHPUnit\Framework\TestCase;
 
 final class GildedRoseTest extends TestCase
 {
-    private const STANDARD_ITEM_NAME = 'standard';
-    private const MINIMUM_QUALITY = 0;
+    private const STANDARD_ITEM_NAME = 'Standard';
+    private const AGED_BRIE_ITEM_NAME = 'Aged Brie';
+    private const MINIMUM_ITEM_QUALITY = 0;
     
-    public function testGivenStandardItemWhenQualityIsGreaterThanZeroThenBothSellAndQualityDecreaseOne(): void
+    public function testGivenStandardItemWhenUpdateQualityIsGreaterThanZeroThenBothSellAndQualityDecreaseOne(): void
     {
         $currentItemName = self::STANDARD_ITEM_NAME;
         $currentItemSellIn = 0;
@@ -21,7 +22,7 @@ final class GildedRoseTest extends TestCase
 
         $expectedItemName = self::STANDARD_ITEM_NAME;
         $expectedItemSellIn = -1;
-        $expectedItemQuality = self::MINIMUM_QUALITY;
+        $expectedItemQuality = self::MINIMUM_ITEM_QUALITY;
 
         $item = $this->whenUpdateItem(
             $currentItemName,
@@ -37,15 +38,15 @@ final class GildedRoseTest extends TestCase
         );
     }
     
-    public function testGivenStandardItemWhenQualityIsZeroThenSellInDecreasesOneAndQualityReamainsZero(): void
+    public function testGivenStandardItemWhenUpdateQualityIsZeroThenSellInDecreasesOneAndQualityReamainsZero(): void
     {
         $currentItemName = self::STANDARD_ITEM_NAME;
         $currentItemSellIn = 0;
-        $currentItemQuality = self::MINIMUM_QUALITY;
+        $currentItemQuality = self::MINIMUM_ITEM_QUALITY;
 
         $expectedItemName = self::STANDARD_ITEM_NAME;
         $expectedItemSellIn = -1;
-        $expectedItemQuality = self::MINIMUM_QUALITY;
+        $expectedItemQuality = self::MINIMUM_ITEM_QUALITY;
         
         $item = $this->whenUpdateItem(
             $currentItemName,
@@ -61,7 +62,7 @@ final class GildedRoseTest extends TestCase
         );
     }
 
-    public function testGivenStandardItemWhenTheSellInHasPassedThenSellInDecreasesByOneAndQualityDecreasesTwiceAsFast(): void
+    public function testGivenStandardItemWhenUpdateTheSellInHasPassedThenSellInDecreasesByOneAndQualityDecreasesTwiceAsFast(): void
     {
         $currentItemName = self::STANDARD_ITEM_NAME;
         $currentItemSellIn = -1;
@@ -69,7 +70,7 @@ final class GildedRoseTest extends TestCase
 
         $expectedItemName = self::STANDARD_ITEM_NAME;
         $expectedItemSellIn = -2;
-        $expectedItemQuality = self::MINIMUM_QUALITY;
+        $expectedItemQuality = self::MINIMUM_ITEM_QUALITY;
 
         $item = $this->whenUpdateItem(
             $currentItemName,
@@ -85,7 +86,7 @@ final class GildedRoseTest extends TestCase
         );
     }
 
-    public function testGivenStandardItemWhenTheSellInHasPassedAndQualityIsZeroThenSellInDecreasesByOneAndQualityRemainsZero(): void
+    public function testGivenStandardItemWhenTheUpdateSellInHasPassedAndQualityIsZeroThenSellInDecreasesByOneAndQualityRemainsZero(): void
     {
         $currentItemName = self::STANDARD_ITEM_NAME;
         $currentItemSellIn = -1;
@@ -93,7 +94,7 @@ final class GildedRoseTest extends TestCase
 
         $expectedItemName = self::STANDARD_ITEM_NAME;
         $expectedItemSellIn = -2;
-        $expectedItemQuality = self::MINIMUM_QUALITY;
+        $expectedItemQuality = self::MINIMUM_ITEM_QUALITY;
 
         $item = $this->whenUpdateItem(
             $currentItemName,
@@ -109,7 +110,7 @@ final class GildedRoseTest extends TestCase
         );
     }
 
-    public function testGivenStandardItemWhenTheSellInHasPassedAndQualityIsOneThenSellInDecreasesByOneAndQualityDecresesTillZero(): void
+    public function testGivenStandardItemWhenUpdateTheSellInHasPassedAndQualityIsOneThenSellInDecreasesByOneAndQualityDecresesTillZero(): void
     {
         $currentItemName = self::STANDARD_ITEM_NAME;
         $currentItemSellIn = -1;
@@ -117,7 +118,55 @@ final class GildedRoseTest extends TestCase
         
         $expectedItemName = self::STANDARD_ITEM_NAME;
         $expectedItemSellIn = -2;
-        $expectedItemQuality = self::MINIMUM_QUALITY;
+        $expectedItemQuality = self::MINIMUM_ITEM_QUALITY;
+
+        $item = $this->whenUpdateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
+        $this->thenItemHasBeenUpdatedAsExpected(
+            $item,
+            $expectedItemName,
+            $expectedItemSellIn,
+            $expectedItemQuality
+        );
+    }
+
+    public function testGivenAgentBrieItemWhenUpdateThenQualityIncreasesOnce(): void
+    {
+        $currentItemName = self::AGED_BRIE_ITEM_NAME;
+        $currentItemSellIn = 1;
+        $currentItemQuality = 1;
+        
+        $expectedItemName = self::AGED_BRIE_ITEM_NAME;
+        $expectedItemSellIn = 0;
+        $expectedItemQuality = 2;
+
+        $item = $this->whenUpdateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
+        $this->thenItemHasBeenUpdatedAsExpected(
+            $item,
+            $expectedItemName,
+            $expectedItemSellIn,
+            $expectedItemQuality
+        );
+    }
+
+    public function testGivenAgentBrieItemWhenUpdateSellInHasPassedThenQualityIncreasesTwice(): void
+    {
+        $currentItemName = self::AGED_BRIE_ITEM_NAME;
+        $currentItemSellIn = -1;
+        $currentItemQuality = 1;
+        
+        $expectedItemName = self::AGED_BRIE_ITEM_NAME;
+        $expectedItemSellIn = -2;
+        $expectedItemQuality = 3;
 
         $item = $this->whenUpdateItem(
             $currentItemName,
