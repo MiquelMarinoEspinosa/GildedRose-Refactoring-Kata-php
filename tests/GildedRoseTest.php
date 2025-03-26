@@ -13,8 +13,9 @@ final class GildedRoseTest extends TestCase
     private const STANDARD_ITEM_NAME = 'Standard';
     private const AGED_BRIE_ITEM_NAME = 'Aged Brie';
     private const MINIMUM_ITEM_QUALITY = 0;
+    private const MAXIMUM_ITEM_QUALITY = 50;
     
-    public function testGivenStandardItemWhenUpdateQualityIsGreaterThanZeroThenBothSellAndQualityDecreaseOne(): void
+    public function testGivenStandardItemWhenUpdateWithQualityIsGreaterThanZeroThenBothSellAndQualityDecreaseOne(): void
     {
         $currentItemName = self::STANDARD_ITEM_NAME;
         $currentItemSellIn = 0;
@@ -38,7 +39,7 @@ final class GildedRoseTest extends TestCase
         );
     }
     
-    public function testGivenStandardItemWhenUpdateQualityIsZeroThenSellInDecreasesOneAndQualityReamainsZero(): void
+    public function testGivenStandardItemWhenUpdateWithQualityIsZeroThenSellInDecreasesOneAndQualityReamainsZero(): void
     {
         $currentItemName = self::STANDARD_ITEM_NAME;
         $currentItemSellIn = 0;
@@ -62,7 +63,7 @@ final class GildedRoseTest extends TestCase
         );
     }
 
-    public function testGivenStandardItemWhenUpdateTheSellInHasPassedThenSellInDecreasesByOneAndQualityDecreasesTwiceAsFast(): void
+    public function testGivenStandardItemWhenUpdateWithTheSellInHasPassedThenSellInDecreasesByOneAndQualityDecreasesTwiceAsFast(): void
     {
         $currentItemName = self::STANDARD_ITEM_NAME;
         $currentItemSellIn = -1;
@@ -110,7 +111,7 @@ final class GildedRoseTest extends TestCase
         );
     }
 
-    public function testGivenStandardItemWhenUpdateTheSellInHasPassedAndQualityIsOneThenSellInDecreasesByOneAndQualityDecresesTillZero(): void
+    public function testGivenStandardItemWhenUpdateWithTheSellInHasPassedAndQualityIsOneThenSellInDecreasesByOneAndQualityDecresesTillZero(): void
     {
         $currentItemName = self::STANDARD_ITEM_NAME;
         $currentItemSellIn = -1;
@@ -134,7 +135,7 @@ final class GildedRoseTest extends TestCase
         );
     }
 
-    public function testGivenAgentBrieItemWhenUpdateThenQualityIncreasesOnce(): void
+    public function testGivenAgentBrieItemWhenUpdateWithThenQualityIncreasesOnce(): void
     {
         $currentItemName = self::AGED_BRIE_ITEM_NAME;
         $currentItemSellIn = 1;
@@ -158,7 +159,31 @@ final class GildedRoseTest extends TestCase
         );
     }
 
-    public function testGivenAgentBrieItemWhenUpdateSellInHasPassedThenQualityIncreasesTwice(): void
+    public function testGivenAgentBrieItemWhenUpdateWithSellInHasPassedThenQualityIncreasesTwice(): void
+    {
+        $currentItemName = self::AGED_BRIE_ITEM_NAME;
+        $currentItemSellIn = 1;
+        $currentItemQuality = self::MAXIMUM_ITEM_QUALITY;
+        
+        $expectedItemName = self::AGED_BRIE_ITEM_NAME;
+        $expectedItemSellIn = 0;
+        $expectedItemQuality = self::MAXIMUM_ITEM_QUALITY;
+
+        $item = $this->whenUpdateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
+        $this->thenItemHasBeenUpdatedAsExpected(
+            $item,
+            $expectedItemName,
+            $expectedItemSellIn,
+            $expectedItemQuality
+        );
+    }
+
+    public function testGivenAgentBrieItemWhenUpdateWithMaximumQualityThenQualityDoesNotIncrease(): void
     {
         $currentItemName = self::AGED_BRIE_ITEM_NAME;
         $currentItemSellIn = -1;

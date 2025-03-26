@@ -223,3 +223,5 @@ Original coverage:
 - Refactor step
     - Extract `Aged Brie` name into a constant
     - Refactor `MINIMUM_QUALITY` constant in to `MINIMUM_ITEM_QUALITY` fro the sake of readability
+- Unit test quality no more than `50` for `Aged Brie`
+ 
