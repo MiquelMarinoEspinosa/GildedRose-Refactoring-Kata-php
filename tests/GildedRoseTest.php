@@ -10,9 +10,10 @@ use PHPUnit\Framework\TestCase;
 
 final class GildedRoseTest extends TestCase
 {
-    private const STANDARD_ITEM_NAME = "Standard";
-    private const AGED_BRIE_ITEM_NAME = "Aged Brie";
-    private const SULFURAS_ITEM_NAME = "Sulfuras, Hand of Ragnaros";
+    private const STANDARD_ITEM_NAME = 'Standard';
+    private const AGED_BRIE_ITEM_NAME = 'Aged Brie';
+    private const SULFURAS_ITEM_NAME = 'Sulfuras, Hand of Ragnaros';
+    private const BACKSTAGE_PASSES_ITEM_NAME = 'Backstage passes to a TAFKAL80ETC concert';
     private const MINIMUM_ITEM_QUALITY = 0;
     private const MAXIMUM_ITEM_QUALITY = 50;
     private const SULFURAS_ITEM_QUALITY = 80;
@@ -242,6 +243,150 @@ final class GildedRoseTest extends TestCase
         $expectedItemName = self::SULFURAS_ITEM_NAME;
         $expectedItemSellIn = -1;
         $expectedItemQuality = self::SULFURAS_ITEM_QUALITY;
+
+        $item = $this->whenUpdateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
+        $this->thenItemHasBeenUpdatedAsExpected(
+            $item,
+            $expectedItemName,
+            $expectedItemSellIn,
+            $expectedItemQuality
+        );
+    }
+
+    public function testGivenBackstagePassesItemWhenUpdateWihtSellInMoreThanTenDaysThenQualityIncreasesByOne(): void
+    {
+        $currentItemName = self::BACKSTAGE_PASSES_ITEM_NAME;
+        $currentItemSellIn = 11;
+        $currentItemQuality = 0;
+        
+        $expectedItemName = self::BACKSTAGE_PASSES_ITEM_NAME;
+        $expectedItemSellIn = 10;
+        $expectedItemQuality = 1;
+
+        $item = $this->whenUpdateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
+        $this->thenItemHasBeenUpdatedAsExpected(
+            $item,
+            $expectedItemName,
+            $expectedItemSellIn,
+            $expectedItemQuality
+        );
+    }
+
+    public function testGivenBackstagePassesItemWhenUpdateWihtSellInTenDaysThenQualityIncreasesByTwo(): void
+    {
+        $currentItemName = self::BACKSTAGE_PASSES_ITEM_NAME;
+        $currentItemSellIn = 10;
+        $currentItemQuality = 0;
+        
+        $expectedItemName = self::BACKSTAGE_PASSES_ITEM_NAME;
+        $expectedItemSellIn = 9;
+        $expectedItemQuality = 2;
+
+        $item = $this->whenUpdateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
+        $this->thenItemHasBeenUpdatedAsExpected(
+            $item,
+            $expectedItemName,
+            $expectedItemSellIn,
+            $expectedItemQuality
+        );
+    }
+
+    public function testGivenBackstagePassesItemWhenUpdateWihtSellInLessThanTenDaysThenQualityIncreasesByTwo(): void
+    {
+        $currentItemName = self::BACKSTAGE_PASSES_ITEM_NAME;
+        $currentItemSellIn = 9;
+        $currentItemQuality = 0;
+        
+        $expectedItemName = self::BACKSTAGE_PASSES_ITEM_NAME;
+        $expectedItemSellIn = 8;
+        $expectedItemQuality = 2;
+
+        $item = $this->whenUpdateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
+        $this->thenItemHasBeenUpdatedAsExpected(
+            $item,
+            $expectedItemName,
+            $expectedItemSellIn,
+            $expectedItemQuality
+        );
+    }
+
+    public function testGivenBackstagePassesItemWhenUpdateWihtSellInFiveDaysThenQualityIncreasesByThree(): void
+    {
+        $currentItemName = self::BACKSTAGE_PASSES_ITEM_NAME;
+        $currentItemSellIn = 5;
+        $currentItemQuality = 0;
+        
+        $expectedItemName = self::BACKSTAGE_PASSES_ITEM_NAME;
+        $expectedItemSellIn = 4;
+        $expectedItemQuality = 3;
+
+        $item = $this->whenUpdateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
+        $this->thenItemHasBeenUpdatedAsExpected(
+            $item,
+            $expectedItemName,
+            $expectedItemSellIn,
+            $expectedItemQuality
+        );
+    }
+
+    public function testGivenBackstagePassesItemWhenUpdateWihtSellInLessThanFiveDaysThenQualityIncreasesByThree(): void
+    {
+        $currentItemName = self::BACKSTAGE_PASSES_ITEM_NAME;
+        $currentItemSellIn = 4;
+        $currentItemQuality = 0;
+        
+        $expectedItemName = self::BACKSTAGE_PASSES_ITEM_NAME;
+        $expectedItemSellIn = 3;
+        $expectedItemQuality = 3;
+
+        $item = $this->whenUpdateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
+        $this->thenItemHasBeenUpdatedAsExpected(
+            $item,
+            $expectedItemName,
+            $expectedItemSellIn,
+            $expectedItemQuality
+        );
+    }
+
+    public function testGivenBackstagePassesItemWhenUpdateWihtSellInHasPassedThenQualityDecreasesToZero(): void
+    {
+        $currentItemName = self::BACKSTAGE_PASSES_ITEM_NAME;
+        $currentItemSellIn = 0;
+        $currentItemQuality = 30;
+        
+        $expectedItemName = self::BACKSTAGE_PASSES_ITEM_NAME;
+        $expectedItemSellIn = -1;
+        $expectedItemQuality = 0;
 
         $item = $this->whenUpdateItem(
             $currentItemName,

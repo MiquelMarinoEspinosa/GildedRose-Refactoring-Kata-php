@@ -226,3 +226,11 @@ Original coverage:
 - Unit test quality no more than `50` for `Aged Brie`
 - Unit test for `Sulfuras` expectations
     - I have had to take a look into the code because intially I have coded with only `Sulfuras` name but the test has not passed. Checking the code I have noticed that the right name is `Sulfuras, Hand of Ragnaros` :)
+
+- Unit tests to cover `Backstage passes`
+    - Side note: start to reconsider the `data provider` approach now that I have just gotten familiar with the logic and the tests
+- At this point all the current logic should have been covered by unit tests according to the requirements
+    - No refactor has been done yet
+    - First the current coverage for the `GildedRose` class would be checked
+        - In case that it is not 100%, new unit tests would be added to finalize the coverage
+    - Once has been checked that the class has been fully covered by unit tests, branches would be created from this one to apply the refactors and eventually add the required new logic for the `Conjured` product
