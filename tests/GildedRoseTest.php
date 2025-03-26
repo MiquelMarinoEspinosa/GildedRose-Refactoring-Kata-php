@@ -10,10 +10,12 @@ use PHPUnit\Framework\TestCase;
 
 final class GildedRoseTest extends TestCase
 {
-    private const STANDARD_ITEM_NAME = 'Standard';
-    private const AGED_BRIE_ITEM_NAME = 'Aged Brie';
+    private const STANDARD_ITEM_NAME = "Standard";
+    private const AGED_BRIE_ITEM_NAME = "Aged Brie";
+    private const SULFURAS_ITEM_NAME = "Sulfuras, Hand of Ragnaros";
     private const MINIMUM_ITEM_QUALITY = 0;
     private const MAXIMUM_ITEM_QUALITY = 50;
+    private const SULFURAS_ITEM_QUALITY = 80;
     
     public function testGivenStandardItemWhenUpdateWithQualityIsGreaterThanZeroThenBothSellAndQualityDecreaseOne(): void
     {
@@ -192,6 +194,54 @@ final class GildedRoseTest extends TestCase
         $expectedItemName = self::AGED_BRIE_ITEM_NAME;
         $expectedItemSellIn = -2;
         $expectedItemQuality = 3;
+
+        $item = $this->whenUpdateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
+        $this->thenItemHasBeenUpdatedAsExpected(
+            $item,
+            $expectedItemName,
+            $expectedItemSellIn,
+            $expectedItemQuality
+        );
+    }
+
+    public function testGivenSulfurasItemWhenUpdateThenItDoesNotChange(): void
+    {
+        $currentItemName = self::SULFURAS_ITEM_NAME;
+        $currentItemSellIn = 1;
+        $currentItemQuality = self::SULFURAS_ITEM_QUALITY;
+        
+        $expectedItemName = self::SULFURAS_ITEM_NAME;
+        $expectedItemSellIn = 1;
+        $expectedItemQuality = self::SULFURAS_ITEM_QUALITY;
+
+        $item = $this->whenUpdateItem(
+            $currentItemName,
+            $currentItemSellIn,
+            $currentItemQuality,
+        );
+        
+        $this->thenItemHasBeenUpdatedAsExpected(
+            $item,
+            $expectedItemName,
+            $expectedItemSellIn,
+            $expectedItemQuality
+        );
+    }
+
+    public function testGivenSulfurasItemWhenUpdateWihtSellInPassedThenItDoesNotChange(): void
+    {
+        $currentItemName = self::SULFURAS_ITEM_NAME;
+        $currentItemSellIn = -1;
+        $currentItemQuality = self::SULFURAS_ITEM_QUALITY;
+        
+        $expectedItemName = self::SULFURAS_ITEM_NAME;
+        $expectedItemSellIn = -1;
+        $expectedItemQuality = self::SULFURAS_ITEM_QUALITY;
 
         $item = $this->whenUpdateItem(
             $currentItemName,

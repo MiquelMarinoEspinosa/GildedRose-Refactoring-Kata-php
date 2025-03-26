@@ -224,4 +224,5 @@ Original coverage:
     - Extract `Aged Brie` name into a constant
     - Refactor `MINIMUM_QUALITY` constant in to `MINIMUM_ITEM_QUALITY` fro the sake of readability
 - Unit test quality no more than `50` for `Aged Brie`
- 
+- Unit test for `Sulfuras` expectations
+    - I have had to take a look into the code because intially I have coded with only `Sulfuras` name but the test has not passed. Checking the code I have noticed that the right name is `Sulfuras, Hand of Ragnaros` :)
