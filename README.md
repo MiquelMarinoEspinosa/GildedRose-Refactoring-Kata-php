@@ -249,3 +249,6 @@ Original coverage:
     - In a real case scenario it could be that there is some urgency to add this logic. Then, once the tests have been finished, I would use the current code to very quick adding the new logic in the legacy code. I would follow a TDD approach. I might do this approach in a different branch also. The inconvinient of this approach is that the refactor should be left for further iterations with the risk of never doing it. Is the developer and team responsability to push further on paying this technical debt at some point in the nearest future
 - Refactor unit test to use a data provider
     - The migration has been done test by test, removing the test migrated at each step and checking the coverage every time a test has been migrated
+- Checking on quick wins to start the refactor
+    - Every time a refactor is applied, the test would be executed with their coverage to guarantee the correctness of the process
+    - Change `$item->quality - $item->quality` to `0`
