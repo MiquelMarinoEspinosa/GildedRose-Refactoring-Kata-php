@@ -6,6 +6,7 @@ namespace Tests;
 
 use GildedRose\GildedRose;
 use GildedRose\Item;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class GildedRoseTest extends TestCase
@@ -17,17 +18,16 @@ final class GildedRoseTest extends TestCase
     private const MINIMUM_ITEM_QUALITY = 0;
     private const MAXIMUM_ITEM_QUALITY = 50;
     private const SULFURAS_ITEM_QUALITY = 80;
-    
-    public function testGivenStandardItemWhenUpdateWithQualityIsGreaterThanZeroThenBothSellAndQualityDecreaseOne(): void
-    {
-        $currentItemName = self::STANDARD_ITEM_NAME;
-        $currentItemSellIn = 0;
-        $currentItemQuality = 1;
 
-        $expectedItemName = self::STANDARD_ITEM_NAME;
-        $expectedItemSellIn = -1;
-        $expectedItemQuality = self::MINIMUM_ITEM_QUALITY;
-
+    #[DataProvider('itemDataProvider')]
+    public function testUpdateItem(
+        string $currentItemName,
+        int $currentItemSellIn,
+        int $currentItemQuality,
+        string $expectedItemName,
+        int $expectedItemSellIn,
+        int $expectedItemQuality
+    ): void {
         $item = $this->whenUpdateItem(
             $currentItemName,
             $currentItemSellIn,
@@ -40,6 +40,20 @@ final class GildedRoseTest extends TestCase
             $expectedItemSellIn,
             $expectedItemQuality
         );
+    }
+
+    public static function itemDataProvider(): array
+    {
+        return [
+            'standard item with quality greater than zero should both sellIn and quality decrease by one' => [
+                'currentItemName' => self::STANDARD_ITEM_NAME,
+                'currentItemSellIn' => 0,
+                'currentItemQuality' => 1,
+                'expectedItemName' => self::STANDARD_ITEM_NAME,
+                'expectedItemSellIn' => -1,
+                'expectedItemQuality' => self::MINIMUM_ITEM_QUALITY
+            ]
+        ];
     }
     
     public function testGivenStandardItemWhenUpdateWithQualityIsZeroThenSellInDecreasesOneAndQualityReamainsZero(): void
