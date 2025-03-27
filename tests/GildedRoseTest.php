@@ -108,56 +108,24 @@ final class GildedRoseTest extends TestCase
                 'expectedItemName' => self::AGED_BRIE_ITEM_NAME,
                 'expectedItemSellIn' => 0,
                 'expectedItemQuality' => self::MAXIMUM_ITEM_QUALITY
+            ],
+            'sulfuras item with not sellIn has passed should not change' => [
+                'currentItemName' => self::SULFURAS_ITEM_NAME,
+                'currentItemSellIn' => 1,
+                'currentItemQuality' => self::SULFURAS_ITEM_QUALITY,
+                'expectedItemName' => self::SULFURAS_ITEM_NAME,
+                'expectedItemSellIn' => 1,
+                'expectedItemQuality' => self::SULFURAS_ITEM_QUALITY
+            ],
+            'sulfuras item with sellIn has passed should not change' => [
+                'currentItemName' => self::SULFURAS_ITEM_NAME,
+                'currentItemSellIn' => -1,
+                'currentItemQuality' => self::SULFURAS_ITEM_QUALITY,
+                'expectedItemName' => self::SULFURAS_ITEM_NAME,
+                'expectedItemSellIn' => -1,
+                'expectedItemQuality' => self::SULFURAS_ITEM_QUALITY
             ]
         ];
-    }
-
-    public function testGivenSulfurasItemWhenUpdateThenItDoesNotChange(): void
-    {
-        $currentItemName = self::SULFURAS_ITEM_NAME;
-        $currentItemSellIn = 1;
-        $currentItemQuality = self::SULFURAS_ITEM_QUALITY;
-        
-        $expectedItemName = self::SULFURAS_ITEM_NAME;
-        $expectedItemSellIn = 1;
-        $expectedItemQuality = self::SULFURAS_ITEM_QUALITY;
-
-        $item = $this->whenUpdateItem(
-            $currentItemName,
-            $currentItemSellIn,
-            $currentItemQuality,
-        );
-        
-        $this->thenItemHasBeenUpdatedAsExpected(
-            $item,
-            $expectedItemName,
-            $expectedItemSellIn,
-            $expectedItemQuality
-        );
-    }
-
-    public function testGivenSulfurasItemWhenUpdateWihtSellInPassedThenItDoesNotChange(): void
-    {
-        $currentItemName = self::SULFURAS_ITEM_NAME;
-        $currentItemSellIn = -1;
-        $currentItemQuality = self::SULFURAS_ITEM_QUALITY;
-        
-        $expectedItemName = self::SULFURAS_ITEM_NAME;
-        $expectedItemSellIn = -1;
-        $expectedItemQuality = self::SULFURAS_ITEM_QUALITY;
-
-        $item = $this->whenUpdateItem(
-            $currentItemName,
-            $currentItemSellIn,
-            $currentItemQuality,
-        );
-        
-        $this->thenItemHasBeenUpdatedAsExpected(
-            $item,
-            $expectedItemName,
-            $expectedItemSellIn,
-            $expectedItemQuality
-        );
     }
 
     public function testGivenBackstagePassesItemWhenUpdateWihtSellInMoreThanTenDaysThenQualityIncreasesByOne(): void
