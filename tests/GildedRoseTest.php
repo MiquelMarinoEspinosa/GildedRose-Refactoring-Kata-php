@@ -77,87 +77,39 @@ final class GildedRoseTest extends TestCase
                 'expectedItemSellIn' => -2,
                 'expectedItemQuality' => self::MINIMUM_ITEM_QUALITY
             ],
-            'standard item with sellIn has passed and quality is one should sellIn decreases by one and quality decreses till zero' => [
-                'currentItemName' => self::STANDARD_ITEM_NAME,
+            'agent brie item with quality one should sellIn decrease and quality increase one' => [
+                'currentItemName' => self::AGED_BRIE_ITEM_NAME,
+                'currentItemSellIn' => 1,
+                'currentItemQuality' => 1,
+                'expectedItemName' => self::AGED_BRIE_ITEM_NAME,
+                'expectedItemSellIn' => 0,
+                'expectedItemQuality' => 2
+            ],
+            'agent brie item with sellIn has passed should quality increase by two' => [
+                'currentItemName' => self::AGED_BRIE_ITEM_NAME,
                 'currentItemSellIn' => -1,
                 'currentItemQuality' => 1,
-                'expectedItemName' => self::STANDARD_ITEM_NAME,
+                'expectedItemName' => self::AGED_BRIE_ITEM_NAME,
                 'expectedItemSellIn' => -2,
-                'expectedItemQuality' => self::MINIMUM_ITEM_QUALITY
+                'expectedItemQuality' => 3
+            ],
+            'agent brie item with sellIn has passed should quality increase by two' => [
+                'currentItemName' => self::AGED_BRIE_ITEM_NAME,
+                'currentItemSellIn' => -1,
+                'currentItemQuality' => 1,
+                'expectedItemName' => self::AGED_BRIE_ITEM_NAME,
+                'expectedItemSellIn' => -2,
+                'expectedItemQuality' => 3
+            ],
+            'agent brie item with maximum quality should quality not increase' => [
+                'currentItemName' => self::AGED_BRIE_ITEM_NAME,
+                'currentItemSellIn' => 1,
+                'currentItemQuality' => self::MAXIMUM_ITEM_QUALITY,
+                'expectedItemName' => self::AGED_BRIE_ITEM_NAME,
+                'expectedItemSellIn' => 0,
+                'expectedItemQuality' => self::MAXIMUM_ITEM_QUALITY
             ]
         ];
-    }
-
-    public function testGivenAgentBrieItemWhenUpdateWithThenQualityIncreasesOnce(): void
-    {
-        $currentItemName = self::AGED_BRIE_ITEM_NAME;
-        $currentItemSellIn = 1;
-        $currentItemQuality = 1;
-        
-        $expectedItemName = self::AGED_BRIE_ITEM_NAME;
-        $expectedItemSellIn = 0;
-        $expectedItemQuality = 2;
-
-        $item = $this->whenUpdateItem(
-            $currentItemName,
-            $currentItemSellIn,
-            $currentItemQuality,
-        );
-        
-        $this->thenItemHasBeenUpdatedAsExpected(
-            $item,
-            $expectedItemName,
-            $expectedItemSellIn,
-            $expectedItemQuality
-        );
-    }
-
-    public function testGivenAgentBrieItemWhenUpdateWithSellInHasPassedThenQualityIncreasesTwice(): void
-    {
-        $currentItemName = self::AGED_BRIE_ITEM_NAME;
-        $currentItemSellIn = 1;
-        $currentItemQuality = self::MAXIMUM_ITEM_QUALITY;
-        
-        $expectedItemName = self::AGED_BRIE_ITEM_NAME;
-        $expectedItemSellIn = 0;
-        $expectedItemQuality = self::MAXIMUM_ITEM_QUALITY;
-
-        $item = $this->whenUpdateItem(
-            $currentItemName,
-            $currentItemSellIn,
-            $currentItemQuality,
-        );
-        
-        $this->thenItemHasBeenUpdatedAsExpected(
-            $item,
-            $expectedItemName,
-            $expectedItemSellIn,
-            $expectedItemQuality
-        );
-    }
-
-    public function testGivenAgentBrieItemWhenUpdateWithMaximumQualityThenQualityDoesNotIncrease(): void
-    {
-        $currentItemName = self::AGED_BRIE_ITEM_NAME;
-        $currentItemSellIn = -1;
-        $currentItemQuality = 1;
-        
-        $expectedItemName = self::AGED_BRIE_ITEM_NAME;
-        $expectedItemSellIn = -2;
-        $expectedItemQuality = 3;
-
-        $item = $this->whenUpdateItem(
-            $currentItemName,
-            $currentItemSellIn,
-            $currentItemQuality,
-        );
-        
-        $this->thenItemHasBeenUpdatedAsExpected(
-            $item,
-            $expectedItemName,
-            $expectedItemSellIn,
-            $expectedItemQuality
-        );
     }
 
     public function testGivenSulfurasItemWhenUpdateThenItDoesNotChange(): void
