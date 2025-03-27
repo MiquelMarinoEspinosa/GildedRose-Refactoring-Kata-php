@@ -6,6 +6,8 @@ namespace GildedRose;
 
 final class GildedRose
 {
+    private const MINIMUM_ITEM_QUALITY = 0;
+
     /**
      * @param Item[] $items
      */
@@ -18,7 +20,7 @@ final class GildedRose
     {
         foreach ($this->items as $item) {
             if ($item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
-                if ($item->quality > 0) {
+                if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
                     if ($item->name != 'Sulfuras, Hand of Ragnaros') {
                         $item->quality = $item->quality - 1;
                     }
@@ -48,13 +50,13 @@ final class GildedRose
             if ($item->sellIn < 0) {
                 if ($item->name != 'Aged Brie') {
                     if ($item->name != 'Backstage passes to a TAFKAL80ETC concert') {
-                        if ($item->quality > 0) {
+                        if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
                             if ($item->name != 'Sulfuras, Hand of Ragnaros') {
                                 $item->quality = $item->quality - 1;
                             }
                         }
                     } else {
-                        $item->quality = 0;
+                        $item->quality = self::MINIMUM_ITEM_QUALITY;
                     }
                 } else {
                     if ($item->quality < 50) {
