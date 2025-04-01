@@ -252,6 +252,8 @@ Original coverage:
 - Checking on quick wins to start the refactor
     - Every time a refactor is applied, the test would be executed with their coverage to guarantee the correctness of the process
     - Change `$item->quality - $item->quality` to `0`
-    - Extract magic numbers into constants as it has been done in the test class
+    - Extract magic numbers into constants as it has been done at the test class
         - extract `0` into `MINIMUM_ITEM_QUALITY` constant
         - extract `50` into `MAXIMUM_ITEM_QUALITY` constant
+    - Extract magic strings into constans as it has been done at the test class to improve readability
+        - extract `Aged Brie` string into constant
