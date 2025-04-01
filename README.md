@@ -258,4 +258,4 @@ Original coverage:
     - Extract magic strings into constans as it has been done at the test class to improve readability
         - extract `Aged Brie` string into a constant
         - extract `Sulfuras, Hand of Ragnaros` string into a constant
-         
+        - extract `Backstage passes to a TAFKAL80ETC concert` string into a constant

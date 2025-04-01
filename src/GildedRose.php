@@ -10,6 +10,7 @@ final class GildedRose
     private const MAXIMUM_ITEM_QUALITY = 50;
     private const AGED_BRIE_ITEM_NAME = 'Aged Brie';
     private const SULFURAS_ITEM_NAME = 'Sulfuras, Hand of Ragnaros';
+    private const BACKSTAGE_PASSES_ITEM_NAME = 'Backstage passes to a TAFKAL80ETC concert';
 
     /**
      * @param Item[] $items
@@ -22,7 +23,7 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
-            if ($item->name != self::AGED_BRIE_ITEM_NAME and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
+            if ($item->name != self::AGED_BRIE_ITEM_NAME and $item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
                 if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
                     if ($item->name != self::SULFURAS_ITEM_NAME) {
                         $item->quality = $item->quality - 1;
@@ -31,7 +32,7 @@ final class GildedRose
             } else {
                 if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
                     $item->quality = $item->quality + 1;
-                    if ($item->name == 'Backstage passes to a TAFKAL80ETC concert') {
+                    if ($item->name == self::BACKSTAGE_PASSES_ITEM_NAME) {
                         if ($item->sellIn < 11) {
                             if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
                                 $item->quality = $item->quality + 1;
@@ -52,7 +53,7 @@ final class GildedRose
 
             if ($item->sellIn < 0) {
                 if ($item->name != self::AGED_BRIE_ITEM_NAME) {
-                    if ($item->name != 'Backstage passes to a TAFKAL80ETC concert') {
+                    if ($item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
                         if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
                             if ($item->name != self::SULFURAS_ITEM_NAME) {
                                 $item->quality = $item->quality - 1;
