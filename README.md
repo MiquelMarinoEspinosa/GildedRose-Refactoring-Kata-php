@@ -237,7 +237,7 @@ Original coverage:
 - The `GildedRose` has `100%` coverage ^_^. Notice that the unit tests have been implemented without looking at the code logic, just using as guide the requirements explained at the `GildedRoseRequirements.md`
 - Ready to start the refactor |:D
 
-#### Refactor
+#### Refactor quick wins
 - A new branch would be created called `refactor-quick-wins`
 - Eventually, the unit test class would be refactor to use `data provider`. It feels like a cleaner solution than the current one
 - Quick wins would be applied and the logic decoubled by items at the same very class
@@ -266,3 +266,4 @@ Original coverage:
 - Move related new private methods conditions into the new private methods
     - Move `$item->quality < self::MAXIMUM_ITEM_QUALITY` to `increaseItemQuality` to enhance `tell do not ask` principle
     - Move `$item->name != self::SULFURAS_ITEM_NAME` and `$item->quality > self::MINIMUM_ITEM_QUALITY` to `decreaseItemQuality`
+    - Move `$item->name != self::SULFURAS_ITEM_NAME` to `decreaseSellIn` method

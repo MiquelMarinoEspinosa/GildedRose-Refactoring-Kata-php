@@ -43,10 +43,8 @@ final class GildedRose
             }   
         }
 
-        if ($item->name != self::SULFURAS_ITEM_NAME) {
-            $this->decreaseSellIn($item);
-        }
-
+        $this->decreaseSellIn($item);
+    
         if ($item->sellIn < 0) {
             if ($item->name != self::AGED_BRIE_ITEM_NAME) {
                 if ($item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
@@ -78,6 +76,8 @@ final class GildedRose
 
     private function decreaseSellIn(Item $item): void
     {
-        $item->sellIn = $item->sellIn - 1;
+        if ($item->name != self::SULFURAS_ITEM_NAME) {
+            $item->sellIn = $item->sellIn - 1;
+        }
     }
 }
