@@ -260,4 +260,5 @@ Original coverage:
         - extract `Sulfuras, Hand of Ragnaros` string into a constant
         - extract `Backstage passes to a TAFKAL80ETC concert` string into a constant
 - Extract paragraph loop inside code into a private method to reduce nesting level and improve readability
-- Extract increase item quality by one in a private method to improve readability
+- Extract `increase` item quality by one in a private method to improve readability
+- Extract `decrease` item quality by one in a private method to improve readability

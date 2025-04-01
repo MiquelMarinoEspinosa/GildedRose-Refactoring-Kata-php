@@ -32,7 +32,7 @@ final class GildedRose
         if ($item->name != self::AGED_BRIE_ITEM_NAME and $item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
             if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
                 if ($item->name != self::SULFURAS_ITEM_NAME) {
-                    $item->quality = $item->quality - 1;
+                    $this->decreaseItemQuality($item);
                 }
             }
         } else {
@@ -62,7 +62,7 @@ final class GildedRose
                 if ($item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
                     if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
                         if ($item->name != self::SULFURAS_ITEM_NAME) {
-                            $item->quality = $item->quality - 1;
+                            $this->decreaseItemQuality($item);
                         }
                     }
                 } else {
@@ -79,5 +79,10 @@ final class GildedRose
     private function increaseItemQuality(Item $item): void
     {
         $item->quality = $item->quality + 1;
+    }
+
+    private function decreaseItemQuality(Item $item): void
+    {
+        $item->quality = $item->quality - 1;
     }
 }
