@@ -36,21 +36,15 @@ final class GildedRose
                 }
             }
         } else {
-            if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
-                $this->increaseItemQuality($item);;
-                if ($item->name == self::BACKSTAGE_PASSES_ITEM_NAME) {
-                    if ($item->sellIn < 11) {
-                        if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
-                            $this->increaseItemQuality($item);;
-                        }
-                    }
-                    if ($item->sellIn < 6) {
-                        if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
-                            $this->increaseItemQuality($item);;
-                        }
-                    }
+            $this->increaseItemQuality($item);
+            if ($item->name == self::BACKSTAGE_PASSES_ITEM_NAME) {
+                if ($item->sellIn < 11) {
+                    $this->increaseItemQuality($item);
                 }
-            }
+                if ($item->sellIn < 6) {
+                    $this->increaseItemQuality($item);
+                }
+            }   
         }
 
         if ($item->name != self::SULFURAS_ITEM_NAME) {
@@ -69,16 +63,16 @@ final class GildedRose
                     $item->quality = self::MINIMUM_ITEM_QUALITY;
                 }
             } else {
-                if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
-                    $this->increaseItemQuality($item);
-                }
+                $this->increaseItemQuality($item);
             }
         }
     }
 
     private function increaseItemQuality(Item $item): void
     {
-        $item->quality = $item->quality + 1;
+        if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
+            $item->quality = $item->quality + 1;
+        }
     }
 
     private function decreaseItemQuality(Item $item): void

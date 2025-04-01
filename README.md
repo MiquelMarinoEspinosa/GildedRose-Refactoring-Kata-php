@@ -263,3 +263,5 @@ Original coverage:
 - Extract `increase` item `quality` by one in a private method to improve readability
 - Extract `decrease` item `quality` by one in a private method to improve readability
 - Extract `decrease` item `sellIn` in a private method to improve readability
+- Move related new private methods conditions into the new private methods
+    - Move `$item->quality < self::MAXIMUM_ITEM_QUALITY` to `increaseItemQuality` to enhance `tell do not ask` principle
