@@ -254,3 +254,4 @@ Original coverage:
     - Change `$item->quality - $item->quality` to `0`
     - Extract magic numbers into constants as it has been done in the test class
         - extract `0` into `MINIMUM_ITEM_QUALITY` constant
+        - extract `50` into `MAXIMUM_ITEM_QUALITY` constant

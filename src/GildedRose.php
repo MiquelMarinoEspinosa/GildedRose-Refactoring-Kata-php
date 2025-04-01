@@ -7,6 +7,7 @@ namespace GildedRose;
 final class GildedRose
 {
     private const MINIMUM_ITEM_QUALITY = 0;
+    private const MAXIMUM_ITEM_QUALITY = 50;
 
     /**
      * @param Item[] $items
@@ -26,16 +27,16 @@ final class GildedRose
                     }
                 }
             } else {
-                if ($item->quality < 50) {
+                if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
                     $item->quality = $item->quality + 1;
                     if ($item->name == 'Backstage passes to a TAFKAL80ETC concert') {
                         if ($item->sellIn < 11) {
-                            if ($item->quality < 50) {
+                            if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
                                 $item->quality = $item->quality + 1;
                             }
                         }
                         if ($item->sellIn < 6) {
-                            if ($item->quality < 50) {
+                            if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
                                 $item->quality = $item->quality + 1;
                             }
                         }
@@ -59,7 +60,7 @@ final class GildedRose
                         $item->quality = self::MINIMUM_ITEM_QUALITY;
                     }
                 } else {
-                    if ($item->quality < 50) {
+                    if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
                         $item->quality = $item->quality + 1;
                     }
                 }
