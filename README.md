@@ -267,3 +267,4 @@ Original coverage:
     - Move `$item->quality < self::MAXIMUM_ITEM_QUALITY` to `increaseItemQuality` to enhance `tell do not ask` principle
     - Move `$item->name != self::SULFURAS_ITEM_NAME` and `$item->quality > self::MINIMUM_ITEM_QUALITY` to `decreaseItemQuality`
     - Move `$item->name != self::SULFURAS_ITEM_NAME` to `decreaseSellIn` method
+- Extract `backstage passes quality` increase item quality into a private method 

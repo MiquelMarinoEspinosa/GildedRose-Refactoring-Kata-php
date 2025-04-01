@@ -33,14 +33,7 @@ final class GildedRose
             $this->decreaseItemQuality($item);
         } else {
             $this->increaseItemQuality($item);
-            if ($item->name == self::BACKSTAGE_PASSES_ITEM_NAME) {
-                if ($item->sellIn < 11) {
-                    $this->increaseItemQuality($item);
-                }
-                if ($item->sellIn < 6) {
-                    $this->increaseItemQuality($item);
-                }
-            }   
+            $this->increaseBackstagePassesQuality($item);  
         }
 
         $this->decreaseSellIn($item);
@@ -79,5 +72,17 @@ final class GildedRose
         if ($item->name != self::SULFURAS_ITEM_NAME) {
             $item->sellIn = $item->sellIn - 1;
         }
+    }
+
+    private function increaseBackstagePassesQuality(Item $item): void
+    {
+        if ($item->name == self::BACKSTAGE_PASSES_ITEM_NAME) {
+                if ($item->sellIn < 11) {
+                    $this->increaseItemQuality($item);
+                }
+                if ($item->sellIn < 6) {
+                    $this->increaseItemQuality($item);
+                }
+            }
     }
 }
