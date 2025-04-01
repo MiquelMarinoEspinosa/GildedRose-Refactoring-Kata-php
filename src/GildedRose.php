@@ -54,7 +54,7 @@ final class GildedRose
         }
 
         if ($item->name != self::SULFURAS_ITEM_NAME) {
-            $item->sellIn = $item->sellIn - 1;
+            $this->decreaseSellIn($item);
         }
 
         if ($item->sellIn < 0) {
@@ -84,5 +84,10 @@ final class GildedRose
     private function decreaseItemQuality(Item $item): void
     {
         $item->quality = $item->quality - 1;
+    }
+
+    private function decreaseSellIn(Item $item): void
+    {
+        $item->sellIn = $item->sellIn - 1;
     }
 }
