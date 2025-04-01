@@ -256,4 +256,6 @@ Original coverage:
         - extract `0` into `MINIMUM_ITEM_QUALITY` constant
         - extract `50` into `MAXIMUM_ITEM_QUALITY` constant
     - Extract magic strings into constans as it has been done at the test class to improve readability
-        - extract `Aged Brie` string into constant
+        - extract `Aged Brie` string into a constant
+        - extract `Sulfuras, Hand of Ragnaros` string into a constant
+         

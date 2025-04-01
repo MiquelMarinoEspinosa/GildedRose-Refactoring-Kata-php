@@ -9,6 +9,7 @@ final class GildedRose
     private const MINIMUM_ITEM_QUALITY = 0;
     private const MAXIMUM_ITEM_QUALITY = 50;
     private const AGED_BRIE_ITEM_NAME = 'Aged Brie';
+    private const SULFURAS_ITEM_NAME = 'Sulfuras, Hand of Ragnaros';
 
     /**
      * @param Item[] $items
@@ -23,7 +24,7 @@ final class GildedRose
         foreach ($this->items as $item) {
             if ($item->name != self::AGED_BRIE_ITEM_NAME and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
                 if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
-                    if ($item->name != 'Sulfuras, Hand of Ragnaros') {
+                    if ($item->name != self::SULFURAS_ITEM_NAME) {
                         $item->quality = $item->quality - 1;
                     }
                 }
@@ -45,7 +46,7 @@ final class GildedRose
                 }
             }
 
-            if ($item->name != 'Sulfuras, Hand of Ragnaros') {
+            if ($item->name != self::SULFURAS_ITEM_NAME) {
                 $item->sellIn = $item->sellIn - 1;
             }
 
@@ -53,7 +54,7 @@ final class GildedRose
                 if ($item->name != self::AGED_BRIE_ITEM_NAME) {
                     if ($item->name != 'Backstage passes to a TAFKAL80ETC concert') {
                         if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
-                            if ($item->name != 'Sulfuras, Hand of Ragnaros') {
+                            if ($item->name != self::SULFURAS_ITEM_NAME) {
                                 $item->quality = $item->quality - 1;
                             }
                         }
