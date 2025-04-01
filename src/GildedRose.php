@@ -30,11 +30,7 @@ final class GildedRose
     private function updateItem(Item $item): void
     {
         if ($item->name != self::AGED_BRIE_ITEM_NAME and $item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
-            if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
-                if ($item->name != self::SULFURAS_ITEM_NAME) {
-                    $this->decreaseItemQuality($item);
-                }
-            }
+            $this->decreaseItemQuality($item);
         } else {
             $this->increaseItemQuality($item);
             if ($item->name == self::BACKSTAGE_PASSES_ITEM_NAME) {
@@ -54,11 +50,7 @@ final class GildedRose
         if ($item->sellIn < 0) {
             if ($item->name != self::AGED_BRIE_ITEM_NAME) {
                 if ($item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
-                    if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
-                        if ($item->name != self::SULFURAS_ITEM_NAME) {
-                            $this->decreaseItemQuality($item);
-                        }
-                    }
+                    $this->decreaseItemQuality($item);
                 } else {
                     $item->quality = self::MINIMUM_ITEM_QUALITY;
                 }
@@ -77,7 +69,11 @@ final class GildedRose
 
     private function decreaseItemQuality(Item $item): void
     {
-        $item->quality = $item->quality - 1;
+        if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
+            if ($item->name != self::SULFURAS_ITEM_NAME) {
+                $item->quality = $item->quality - 1;
+            }
+        }
     }
 
     private function decreaseSellIn(Item $item): void
