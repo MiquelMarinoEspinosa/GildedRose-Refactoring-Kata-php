@@ -23,49 +23,54 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
-            if ($item->name != self::AGED_BRIE_ITEM_NAME and $item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
-                if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
-                    if ($item->name != self::SULFURAS_ITEM_NAME) {
-                        $item->quality = $item->quality - 1;
+            $this->updateItem($item);
+        }
+    }
+
+    private function updateItem(Item $item): void
+    {
+        if ($item->name != self::AGED_BRIE_ITEM_NAME and $item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
+            if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
+                if ($item->name != self::SULFURAS_ITEM_NAME) {
+                    $item->quality = $item->quality - 1;
+                }
+            }
+        } else {
+            if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
+                $item->quality = $item->quality + 1;
+                if ($item->name == self::BACKSTAGE_PASSES_ITEM_NAME) {
+                    if ($item->sellIn < 11) {
+                        if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
+                            $item->quality = $item->quality + 1;
+                        }
                     }
+                    if ($item->sellIn < 6) {
+                        if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
+                            $item->quality = $item->quality + 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        if ($item->name != self::SULFURAS_ITEM_NAME) {
+            $item->sellIn = $item->sellIn - 1;
+        }
+
+        if ($item->sellIn < 0) {
+            if ($item->name != self::AGED_BRIE_ITEM_NAME) {
+                if ($item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
+                    if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
+                        if ($item->name != self::SULFURAS_ITEM_NAME) {
+                            $item->quality = $item->quality - 1;
+                        }
+                    }
+                } else {
+                    $item->quality = self::MINIMUM_ITEM_QUALITY;
                 }
             } else {
                 if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
                     $item->quality = $item->quality + 1;
-                    if ($item->name == self::BACKSTAGE_PASSES_ITEM_NAME) {
-                        if ($item->sellIn < 11) {
-                            if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
-                                $item->quality = $item->quality + 1;
-                            }
-                        }
-                        if ($item->sellIn < 6) {
-                            if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
-                                $item->quality = $item->quality + 1;
-                            }
-                        }
-                    }
-                }
-            }
-
-            if ($item->name != self::SULFURAS_ITEM_NAME) {
-                $item->sellIn = $item->sellIn - 1;
-            }
-
-            if ($item->sellIn < 0) {
-                if ($item->name != self::AGED_BRIE_ITEM_NAME) {
-                    if ($item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
-                        if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
-                            if ($item->name != self::SULFURAS_ITEM_NAME) {
-                                $item->quality = $item->quality - 1;
-                            }
-                        }
-                    } else {
-                        $item->quality = self::MINIMUM_ITEM_QUALITY;
-                    }
-                } else {
-                    if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
-                        $item->quality = $item->quality + 1;
-                    }
                 }
             }
         }

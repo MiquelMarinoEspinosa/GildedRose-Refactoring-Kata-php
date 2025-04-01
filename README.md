@@ -259,3 +259,4 @@ Original coverage:
         - extract `Aged Brie` string into a constant
         - extract `Sulfuras, Hand of Ragnaros` string into a constant
         - extract `Backstage passes to a TAFKAL80ETC concert` string into a constant
+- Extract paragraph loop inside code into a private method to reduce nesting level and improve readability
