@@ -33,7 +33,6 @@ final class GildedRose
             $this->decreaseItemQuality($item);
         } else {
             $this->increaseItemQuality($item);
-            $this->increaseBackstagePassesQuality($item);  
         }
 
         $this->decreaseSellIn($item);
@@ -57,7 +56,23 @@ final class GildedRose
             return;
         }
 
-        $item->quality = $item->quality + 1;        
+        $item->quality = $item->quality + 1;
+        
+        if($item->name !== self::BACKSTAGE_PASSES_ITEM_NAME) {
+            return;
+        }
+        
+        if ($item->sellIn >= 11) {
+            return;
+        }
+
+        $item->quality = $item->quality + 1;
+
+        if ($item->sellIn >= 6) {
+            return;
+        }
+        
+        $item->quality = $item->quality + 1;
     }
 
     private function decreaseItemQuality(Item $item): void
@@ -80,24 +95,5 @@ final class GildedRose
         }
         
         $item->sellIn = $item->sellIn - 1;
-    }
-
-    private function increaseBackstagePassesQuality(Item $item): void
-    {
-        if($item->name !== self::BACKSTAGE_PASSES_ITEM_NAME) {
-            return;
-        }
-        
-        if ($item->sellIn >= 11) {
-            return;
-        }
-
-        $this->increaseItemQuality($item);
-
-        if ($item->sellIn >= 6) {
-            return;
-        }
-        
-        $this->increaseItemQuality($item);
     }
 }
