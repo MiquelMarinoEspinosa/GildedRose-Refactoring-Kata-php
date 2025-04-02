@@ -42,11 +42,7 @@ final class GildedRose
         }
 
         if ($item->name != self::AGED_BRIE_ITEM_NAME) {
-            if ($item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
-                $this->decreaseItemQuality($item);
-            } else {
-                $item->quality = self::MINIMUM_ITEM_QUALITY;
-            }
+            $this->decreaseItemQuality($item);
         } else {
             $this->increaseItemQuality($item);
         }        
@@ -84,6 +80,11 @@ final class GildedRose
         }
 
         if (self::SULFURAS_ITEM_NAME === $item->name) {
+            return;
+        }
+
+        if (self::BACKSTAGE_PASSES_ITEM_NAME === $item->name) {
+            $item->quality = self::MINIMUM_ITEM_QUALITY;
             return;
         }
         
