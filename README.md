@@ -278,3 +278,5 @@ Original coverage:
         - Change `$item->sellIn < 6` inner conditional into early return
         - Change `$item->sellIn < 11` inner conditional into early return
         - Change `backstage passes` outter conditional into early return
+    - Change `decreaseItemQuality` conditionals
+        - Change `sulfuras` item name inner conditions into early return with yoda condition
