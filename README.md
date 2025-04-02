@@ -277,3 +277,4 @@ Original coverage:
     - Change `increaseBackstagePassesQuality` conditionals
         - Change `$item->sellIn < 6` inner conditional into early return
         - Change `$item->sellIn < 11` inner conditional into early return
+        - Change `backstage passes` outter conditional into early return
