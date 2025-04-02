@@ -271,3 +271,5 @@ Original coverage:
 - Next steps
     - Change conditionals private methods into early returns guard clauses
     - Move and refactor last conditions in the `updateItem` to the private methods
+- Change conditionals private methods into early returns guard clauses
+    - Change `decreaseSellIn` `sulfuras` conditional into early return using yoda condition

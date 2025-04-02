@@ -69,9 +69,11 @@ final class GildedRose
 
     private function decreaseSellIn(Item $item): void
     {
-        if ($item->name != self::SULFURAS_ITEM_NAME) {
-            $item->sellIn = $item->sellIn - 1;
+        if (self::SULFURAS_ITEM_NAME === $item->name) {
+            return;
         }
+        
+        $item->sellIn = $item->sellIn - 1;
     }
 
     private function increaseBackstagePassesQuality(Item $item): void
