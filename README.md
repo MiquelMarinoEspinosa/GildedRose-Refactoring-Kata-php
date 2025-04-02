@@ -276,3 +276,4 @@ Original coverage:
     - Change `increaseItemQuality` `maximum item quality` conditional into early return
     - Change `increaseBackstagePassesQuality` conditionals
         - Change `$item->sellIn < 6` inner conditional into early return
+        - Change `$item->sellIn < 11` inner conditional into early return

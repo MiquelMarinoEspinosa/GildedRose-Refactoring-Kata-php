@@ -81,9 +81,11 @@ final class GildedRose
     private function increaseBackstagePassesQuality(Item $item): void
     {
         if ($item->name == self::BACKSTAGE_PASSES_ITEM_NAME) {
-            if ($item->sellIn < 11) {
-                $this->increaseItemQuality($item);
+            if ($item->sellIn >= 11) {
+                return;
             }
+
+            $this->increaseItemQuality($item);
 
             if ($item->sellIn >= 6) {
                 return;
