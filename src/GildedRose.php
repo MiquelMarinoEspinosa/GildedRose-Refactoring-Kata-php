@@ -37,17 +37,19 @@ final class GildedRose
 
         $this->decreaseSellIn($item);
     
-        if ($item->sellIn < 0) {
-            if ($item->name != self::AGED_BRIE_ITEM_NAME) {
-                if ($item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
-                    $this->decreaseItemQuality($item);
-                } else {
-                    $item->quality = self::MINIMUM_ITEM_QUALITY;
-                }
-            } else {
-                $this->increaseItemQuality($item);
-            }
+        if ($item->sellIn >= 0) {
+            return;
         }
+
+        if ($item->name != self::AGED_BRIE_ITEM_NAME) {
+            if ($item->name != self::BACKSTAGE_PASSES_ITEM_NAME) {
+                $this->decreaseItemQuality($item);
+            } else {
+                $item->quality = self::MINIMUM_ITEM_QUALITY;
+            }
+        } else {
+            $this->increaseItemQuality($item);
+        }        
     }
 
     private function increaseItemQuality(Item $item): void

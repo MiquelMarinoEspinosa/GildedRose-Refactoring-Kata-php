@@ -282,3 +282,4 @@ Original coverage:
         - Change `sulfuras` item name inner conditions into early return with yoda condition
         - Change `minimum item quality` outer condition into early return
     - Move `increaseBackstagePassesQuality` logic into `increaseItemQuality` method  and remove call in `updateItem` method
+    - Change `updateItem` `$item->sellIn < 0` conditionals into early return 
