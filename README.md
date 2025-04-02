@@ -284,3 +284,5 @@ Original coverage:
     - Move `increaseBackstagePassesQuality` logic into `increaseItemQuality` method  and remove call in `updateItem` method
     - Change `updateItem` `$item->sellIn < 0` conditionals into early return
     - Move `BACKSTAGE_PASSES_ITEM_NAME` inner conditional logic into `decreaseItemQuality`
+- Next steps
+    - Move after `sellIn` check `updateItem` `AGED_BRIE_ITEM_NAME` conditional into `decreaseItemQuality`
