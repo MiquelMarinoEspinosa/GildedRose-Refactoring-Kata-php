@@ -280,3 +280,4 @@ Original coverage:
         - Change `backstage passes` outter conditional into early return
     - Change `decreaseItemQuality` conditionals
         - Change `sulfuras` item name inner conditions into early return with yoda condition
+        - Change `minimum item quality` outer condition into early return

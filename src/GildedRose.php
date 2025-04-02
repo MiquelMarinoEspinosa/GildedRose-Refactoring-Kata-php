@@ -62,12 +62,15 @@ final class GildedRose
 
     private function decreaseItemQuality(Item $item): void
     {
-        if ($item->quality > self::MINIMUM_ITEM_QUALITY) {
-            if (self::SULFURAS_ITEM_NAME === $item->name) {
-                return;
-            }
-            $item->quality = $item->quality - 1;
+        if ($item->quality <= self::MINIMUM_ITEM_QUALITY) {
+            return;
         }
+
+        if (self::SULFURAS_ITEM_NAME === $item->name) {
+            return;
+        }
+        
+        $item->quality = $item->quality - 1;
     }
 
     private function decreaseSellIn(Item $item): void
