@@ -84,9 +84,12 @@ final class GildedRose
             if ($item->sellIn < 11) {
                 $this->increaseItemQuality($item);
             }
-            if ($item->sellIn < 6) {
-                $this->increaseItemQuality($item);
+
+            if ($item->sellIn >= 6) {
+                return;
             }
+            
+            $this->increaseItemQuality($item);
         }
     }
 }

@@ -271,6 +271,8 @@ Original coverage:
 - Next steps
     - Change conditionals private methods into early returns guard clauses
     - Move and refactor last conditions in the `updateItem` to the private methods
-- Change conditionals private methods into early returns guard clauses
+- Change conditionals private methods into early returns guard clauses changing the conditional into its contrary, which will increase the readability as well as reduce the cognitive load
     - Change `decreaseItemSellIn` `sulfuras` conditional into early return using yoda condition
     - Change `increaseItemQuality` `maximum item quality` conditional into early return
+    - Change `increaseBackstagePassesQuality` conditionals
+        - Change `$item->sellIn < 6` inner conditional into early return
