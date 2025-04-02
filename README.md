@@ -240,7 +240,7 @@ Original coverage:
 #### Refactor quick wins
 - A new branch would be created called `refactor-quick-wins`
 - Eventually, the unit test class would be refactor to use `data provider`. It feels like a cleaner solution than the current one
-- Quick wins would be applied and the logic decoubled by items at the same very class
+- Quick wins would be applied and the logic decoupled by items at the same very class
 - Once the logic has been decoupled, there are a couple of ideas to refactor and place the item's logic to its own classes
         - `strategy pattern`
         - `polimorfysm` without altering the `Item` class
@@ -250,7 +250,7 @@ Original coverage:
 - Refactor unit test to use a data provider
     - The migration has been done test by test, removing the test migrated at each step and checking the coverage every time a test has been migrated
 - Checking on quick wins to start the refactor
-    - Every time a refactor is applied, the test would be executed with their coverage to guarantee the correctness of the process
+    - Every time a refactor is applied, the tests would be executed with their coverage to guarantee the correctness of the process
     - Change `$item->quality - $item->quality` to `0`
     - Extract magic numbers into constants as it has been done at the test class
         - extract `0` into `MINIMUM_ITEM_QUALITY` constant
@@ -272,4 +272,5 @@ Original coverage:
     - Change conditionals private methods into early returns guard clauses
     - Move and refactor last conditions in the `updateItem` to the private methods
 - Change conditionals private methods into early returns guard clauses
-    - Change `decreaseSellIn` `sulfuras` conditional into early return using yoda condition
+    - Change `decreaseItemSellIn` `sulfuras` conditional into early return using yoda condition
+    - Change `increaseItemQuality` `maximum item quality` conditional into early return

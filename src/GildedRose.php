@@ -53,9 +53,11 @@ final class GildedRose
 
     private function increaseItemQuality(Item $item): void
     {
-        if ($item->quality < self::MAXIMUM_ITEM_QUALITY) {
-            $item->quality = $item->quality + 1;
+        if ($item->quality >= self::MAXIMUM_ITEM_QUALITY) {
+            return;
         }
+
+        $item->quality = $item->quality + 1;        
     }
 
     private function decreaseItemQuality(Item $item): void
