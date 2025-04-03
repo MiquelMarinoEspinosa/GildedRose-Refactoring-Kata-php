@@ -29,11 +29,7 @@ final class GildedRose
 
     private function updateItem(Item $item): void
     {
-        if (self::AGED_BRIE_ITEM_NAME === $item->name || self::BACKSTAGE_PASSES_ITEM_NAME === $item->name) {
-            $this->increaseItemQuality($item);
-        } else {
-            $this->decreaseItemQuality($item);
-        }
+        $this->updateItemQuality($item);
 
         $this->decreaseSellIn($item);
     
@@ -41,12 +37,18 @@ final class GildedRose
             return;
         }
 
+        $this->updateItemQuality($item);      
+    }
+
+    private function updateItemQuality(Item $item): void
+    {
         if (self::AGED_BRIE_ITEM_NAME === $item->name || self::BACKSTAGE_PASSES_ITEM_NAME === $item->name) {
             $this->increaseItemQuality($item);
         } else {
             $this->decreaseItemQuality($item);
-        }       
+        }
     }
+
 
     private function increaseItemQuality(Item $item): void
     {

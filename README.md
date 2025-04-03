@@ -293,3 +293,4 @@ Original coverage:
 - Slowly during the refactors, started to emerge a design proposal by the code which indicates that applying `polymorfism` might be a good idea, more specifically applying the `template method design pattern`
 - Duplicate `$item->name != self::AGED_BRIE_ITEM_NAME and $item->name != self::BACKSTAGE_PASSES_ITEM_NAME` conditional logic for both code's block - before and after updating `sellIn`
 - Inverse `$item->name != self::AGED_BRIE_ITEM_NAME and $item->name != self::BACKSTAGE_PASSES_ITEM_NAME` conditional to possitive `self::AGED_BRIE_ITEM_NAME === $item->name || self::BACKSTAGE_PASSES_ITEM_NAME === $item->name` conditional to reduce cognitive load
+- Extract `decrease` and `increase` quality from `updateItem` into a new method called `updateItemQuality` 
