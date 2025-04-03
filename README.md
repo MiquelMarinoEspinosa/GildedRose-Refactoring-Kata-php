@@ -286,3 +286,9 @@ Original coverage:
     - Move `BACKSTAGE_PASSES_ITEM_NAME` inner conditional logic into `decreaseItemQuality`
 - Next steps
     - Move after `sellIn` check `updateItem` `AGED_BRIE_ITEM_NAME` conditional into `decreaseItemQuality`
+- Move `backstage passes minimum quality when sellIn has passed` from `decreaseItemQuality` to `increaseItemQuality`
+    - According to the requirements and the code implementation, the `backstage passes` always `increases` its `quality` until the `sellIn` has passed
+    - Then changes its quality to `0` which creates the fall impresion that the logic should be implemented in `decreaseItemQuality`
+    - However the `decreaseItemQuality` method is never called for `backstage passes`. Instead `increaseItemQuality` is called. For that reason this logic has eventually been placed at this method
+- Slowly during the refactors, started to emerge a design proposal by the code which indicates that applying `polymorfism` might be a good idea, more specifically applying the `template method design pattern`
+- Duplicate `$item->name != self::AGED_BRIE_ITEM_NAME and $item->name != self::BACKSTAGE_PASSES_ITEM_NAME` conditional logic for both code's block - before and after updating `sellIn`
