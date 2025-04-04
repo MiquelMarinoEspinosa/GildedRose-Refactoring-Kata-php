@@ -293,4 +293,20 @@ Original coverage:
 - Slowly during the refactors, started to emerge a design proposal by the code which indicates that applying `polymorfism` might be a good idea, more specifically applying the `template method design pattern`
 - Duplicate `$item->name != self::AGED_BRIE_ITEM_NAME and $item->name != self::BACKSTAGE_PASSES_ITEM_NAME` conditional logic for both code's block - before and after updating `sellIn`
 - Inverse `$item->name != self::AGED_BRIE_ITEM_NAME and $item->name != self::BACKSTAGE_PASSES_ITEM_NAME` conditional to possitive `self::AGED_BRIE_ITEM_NAME === $item->name || self::BACKSTAGE_PASSES_ITEM_NAME === $item->name` conditional to reduce cognitive load
-- Extract `decrease` and `increase` quality from `updateItem` into a new method called `updateItemQuality` 
+- Extract `decrease` and `increase` quality from `updateItem` into a new method called `updateItemQuality`
+
+#### Refactor template method
+
+- After the first refactor applying quick wins, emerged an indication of design pattern analysing the `updateItem` method
+    - The method has `4` well defined steps
+        - `updateItemQuality`
+        - `decreaseSellIn`
+        - `check sell in has passed`
+        - `updateItemQuality`
+    - Notice also that the different logic applied by item is encapsulated at the methods
+- It looks like that the `template method` design pattern can be applied for this code
+    - Unfortunatelly, the `Item` class cannot be changed due to previous requirements
+    - Therefore, a new class called `UpdatableItem` would be created, which will have the same data as `Item`
+    - The logic at `updateItem` method will be placed at this new class
+    - Then the `polymorfism` will be created to move the specific logic to the new `subclasses` which will extend from `UpdatableItem`
+    - Finally, the `Conjured` new item logic will be implemented
