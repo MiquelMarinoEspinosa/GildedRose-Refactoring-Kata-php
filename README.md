@@ -312,3 +312,4 @@ Original coverage:
     - Finally, the `Conjured` new item logic will be implemented
     - Create `UpdatableItem` class and move `updateItem` method to the new class
     - Add fields to the construct `UpdatableItem` and pass the `Item` valies to the new construct method class
+- Use `UpdatableItem` internal values to update the values accordingly and assign the result to `Item` values

@@ -25,7 +25,7 @@ final class UpdatableItem
 
         $this->decreaseSellIn($item);
     
-        if ($item->sellIn >= 0) {
+        if ($this->sellIn >= 0) {
             return;
         }
 
@@ -34,7 +34,7 @@ final class UpdatableItem
 
     private function updateItemQuality(Item $item): void
     {
-        if (self::AGED_BRIE_ITEM_NAME === $item->name || self::BACKSTAGE_PASSES_ITEM_NAME === $item->name) {
+        if (self::AGED_BRIE_ITEM_NAME === $this->name || self::BACKSTAGE_PASSES_ITEM_NAME === $this->name) {
             $this->increaseItemQuality($item);
         } else {
             $this->decreaseItemQuality($item);
@@ -44,53 +44,53 @@ final class UpdatableItem
 
     private function increaseItemQuality(Item $item): void
     {
-        if (self::BACKSTAGE_PASSES_ITEM_NAME === $item->name && $item->sellIn < 0) {
-            $item->quality = self::MINIMUM_ITEM_QUALITY;
+        if (self::BACKSTAGE_PASSES_ITEM_NAME === $this->name && $this->sellIn < 0) {
+            $this->quality = self::MINIMUM_ITEM_QUALITY;
             return;
         }
 
-        if ($item->quality >= self::MAXIMUM_ITEM_QUALITY) {
+        if ($this->quality >= self::MAXIMUM_ITEM_QUALITY) {
             return;
         }
 
-        $item->quality = $item->quality + 1;
+        $this->quality = $this->quality + 1;
         
-        if($item->name !== self::BACKSTAGE_PASSES_ITEM_NAME) {
-            return;
-        }
-        
-        if ($item->sellIn >= 11) {
-            return;
-        }
-
-        $item->quality = $item->quality + 1;
-
-        if ($item->sellIn >= 6) {
+        if($this->name !== self::BACKSTAGE_PASSES_ITEM_NAME) {
             return;
         }
         
-        $item->quality = $item->quality + 1;
+        if ($this->sellIn >= 11) {
+            return;
+        }
+
+        $this->quality = $this->quality + 1;
+
+        if ($this->sellIn >= 6) {
+            return;
+        }
+        
+        $this->quality = $this->quality + 1;
     }
 
     private function decreaseItemQuality(Item $item): void
     {
-        if ($item->quality <= self::MINIMUM_ITEM_QUALITY) {
+        if ($this->quality <= self::MINIMUM_ITEM_QUALITY) {
             return;
         }
 
-        if (self::SULFURAS_ITEM_NAME === $item->name) {
+        if (self::SULFURAS_ITEM_NAME === $this->name) {
             return;
         }
         
-        $item->quality = $item->quality - 1;
+        $this->quality = $this->quality - 1;
     }
 
     private function decreaseSellIn(Item $item): void
     {
-        if (self::SULFURAS_ITEM_NAME === $item->name) {
+        if (self::SULFURAS_ITEM_NAME === $this->name) {
             return;
         }
         
-        $item->sellIn = $item->sellIn - 1;
+        $this->sellIn = $this->sellIn - 1;
     }
 }

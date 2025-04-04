@@ -19,10 +19,13 @@ final class GildedRose
         foreach ($this->items as $item) {
             $updatableItem = new UpdatableItem(
                 $item->name,
-                $item->quality,
-                $item->sellIn
+                $item->sellIn,
+                $item->quality
             );
             $updatableItem->updateItem($item);
+
+            $item->quality = $updatableItem->quality;
+            $item->sellIn = $updatableItem->sellIn;
         }
     }
 }
