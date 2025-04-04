@@ -310,3 +310,4 @@ Original coverage:
     - The logic at `updateItem` method will be placed at this new class
     - Then the `polymorfism` will be created to move the specific logic to the new `subclasses` which will extend from `UpdatableItem`
     - Finally, the `Conjured` new item logic will be implemented
+    - Create `UpdatableItem` class and move `updateItem` method to the new class
