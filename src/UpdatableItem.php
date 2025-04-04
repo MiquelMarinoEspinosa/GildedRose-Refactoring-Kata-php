@@ -19,30 +19,32 @@ final class UpdatableItem
     ) {
     }
 
-    public function updateItem(): void
+    public function update(): self
     {
-        $this->updateItemQuality();
+        $this->updateQuality();
 
         $this->decreaseSellIn();
     
         if ($this->sellIn >= 0) {
-            return;
+            return $this;
         }
 
-        $this->updateItemQuality();      
+        $this->updateQuality();
+        
+        return $this;
     }
 
-    private function updateItemQuality(): void
+    private function updateQuality(): void
     {
         if (self::AGED_BRIE_ITEM_NAME === $this->name || self::BACKSTAGE_PASSES_ITEM_NAME === $this->name) {
-            $this->increaseItemQuality();
+            $this->increaseQuality();
         } else {
-            $this->decreaseItemQuality();
+            $this->decreaseQuality();
         }
     }
 
 
-    private function increaseItemQuality(): void
+    private function increaseQuality(): void
     {
         if (self::BACKSTAGE_PASSES_ITEM_NAME === $this->name && $this->sellIn < 0) {
             $this->quality = self::MINIMUM_ITEM_QUALITY;
@@ -72,7 +74,7 @@ final class UpdatableItem
         $this->quality = $this->quality + 1;
     }
 
-    private function decreaseItemQuality(): void
+    private function decreaseQuality(): void
     {
         if ($this->quality <= self::MINIMUM_ITEM_QUALITY) {
             return;
