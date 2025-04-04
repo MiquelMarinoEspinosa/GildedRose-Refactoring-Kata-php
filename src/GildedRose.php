@@ -22,7 +22,7 @@ final class GildedRose
                 $item->sellIn,
                 $item->quality
             );
-            $updatableItem->updateItem($item);
+            $updatableItem->updateItem();
 
             $item->quality = $updatableItem->quality;
             $item->sellIn = $updatableItem->sellIn;

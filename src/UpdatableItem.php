@@ -19,30 +19,30 @@ final class UpdatableItem
     ) {
     }
 
-    public function updateItem(Item $item): void
+    public function updateItem(): void
     {
-        $this->updateItemQuality($item);
+        $this->updateItemQuality();
 
-        $this->decreaseSellIn($item);
+        $this->decreaseSellIn();
     
         if ($this->sellIn >= 0) {
             return;
         }
 
-        $this->updateItemQuality($item);      
+        $this->updateItemQuality();      
     }
 
-    private function updateItemQuality(Item $item): void
+    private function updateItemQuality(): void
     {
         if (self::AGED_BRIE_ITEM_NAME === $this->name || self::BACKSTAGE_PASSES_ITEM_NAME === $this->name) {
-            $this->increaseItemQuality($item);
+            $this->increaseItemQuality();
         } else {
-            $this->decreaseItemQuality($item);
+            $this->decreaseItemQuality();
         }
     }
 
 
-    private function increaseItemQuality(Item $item): void
+    private function increaseItemQuality(): void
     {
         if (self::BACKSTAGE_PASSES_ITEM_NAME === $this->name && $this->sellIn < 0) {
             $this->quality = self::MINIMUM_ITEM_QUALITY;
@@ -72,7 +72,7 @@ final class UpdatableItem
         $this->quality = $this->quality + 1;
     }
 
-    private function decreaseItemQuality(Item $item): void
+    private function decreaseItemQuality(): void
     {
         if ($this->quality <= self::MINIMUM_ITEM_QUALITY) {
             return;
@@ -85,7 +85,7 @@ final class UpdatableItem
         $this->quality = $this->quality - 1;
     }
 
-    private function decreaseSellIn(Item $item): void
+    private function decreaseSellIn(): void
     {
         if (self::SULFURAS_ITEM_NAME === $this->name) {
             return;
