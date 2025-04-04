@@ -17,7 +17,11 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
-            $updatableItem = new UpdatableItem();
+            $updatableItem = new UpdatableItem(
+                $item->name,
+                $item->quality,
+                $item->sellIn
+            );
             $updatableItem->updateItem($item);
         }
     }
