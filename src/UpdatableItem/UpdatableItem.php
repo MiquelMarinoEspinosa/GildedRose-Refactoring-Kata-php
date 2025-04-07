@@ -75,13 +75,6 @@ class UpdatableItem
         }
         
         $this->quality = $this->quality - 1;
-
-        if (self::CONJURED_ITEM_NAME !== $this->name)
-        {
-            return;
-        }
-
-        $this->quality = $this->quality - 1;
     }
 
     protected function decreaseSellIn(): void

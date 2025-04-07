@@ -350,3 +350,4 @@ Original coverage:
         - The changes are directly added inline at the `updateQuality` `UpdatableItem` parent class with `Conjure` condition
     - BLUE: Add `Conjured` new subclass and pull down its logic from the parent class
         - Introduce `ConjuredUpdatableItem` subclass
+        - Pull down its logic from the parent class
