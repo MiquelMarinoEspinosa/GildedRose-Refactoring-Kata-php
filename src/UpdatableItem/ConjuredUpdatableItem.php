@@ -6,9 +6,11 @@ namespace GildedRose\UpdatableItem;
 
 final class ConjuredUpdatableItem extends UpdatableItem 
 {
+    private const MINIMUM_QUALITY = 0;
+
     protected function updateQuality(): void
     {
-        if ($this->quality <= 0) {
+        if ($this->quality <= self::MINIMUM_QUALITY) {
             return;
         }
 

@@ -356,3 +356,4 @@ Original coverage:
 - TDD
     - RED: add failing test when `Conjured` has minimum quality should not decrease
     - GREEN: apply fix copying safe guard from the parent class
+    - BLUES: extract magic number into a constant
