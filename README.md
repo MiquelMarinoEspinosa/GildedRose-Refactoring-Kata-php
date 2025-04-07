@@ -345,6 +345,8 @@ Original coverage:
 - Next steps
     - Introduce `Conjured` updateble item logic using `TDD` strategy
 - TDD
-    - Implements failing test for `Conjured` new item
-    - Fix the test applying the mininmum changes
-        - The changes are directly added inline at the `updateQuality` `UpdatableItem` parent class with `Conjure` condition 
+    - RED: Implements failing test for `Conjured` new item
+    - GREEN: Fix the test applying the mininmum changes
+        - The changes are directly added inline at the `updateQuality` `UpdatableItem` parent class with `Conjure` condition
+    - BLUE: Add `Conjured` new subclass and pull down its logic from the parent class
+        - Introduce `ConjuredUpdatableItem` subclass

@@ -40,6 +40,11 @@ class UpdatableItem
                 $sellIn,
                 $quality
             ),
+            self::CONJURED_ITEM_NAME => new ConjuredUpdatableItem(
+                $name,
+                $sellIn,
+                $quality
+            ),
             default => new self(
                 $name,
                 $sellIn,
