@@ -355,3 +355,4 @@ Original coverage:
 - Add extra unit test to confirm that the `Conjured` item decreased twice when the item has passed
 - TDD
     - RED: add failing test when `Conjured` has minimum quality should not decrease
+    - GREEN: apply fix copying safe guard from the parent class
