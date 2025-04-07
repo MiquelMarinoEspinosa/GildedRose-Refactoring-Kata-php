@@ -54,7 +54,7 @@ class UpdatableItem
         return $this;
     }
 
-    private function updateQuality(): void
+    protected function updateQuality(): void
     {
         if (self::AGED_BRIE_ITEM_NAME === $this->name || self::BACKSTAGE_PASSES_ITEM_NAME === $this->name) {
             $this->increaseQuality();
@@ -97,10 +97,6 @@ class UpdatableItem
     private function decreaseQuality(): void
     {
         if ($this->quality <= self::MINIMUM_ITEM_QUALITY) {
-            return;
-        }
-
-        if (self::SULFURAS_ITEM_NAME === $this->name) {
             return;
         }
         

@@ -6,5 +6,8 @@ namespace GildedRose\UpdatableItem;
 
 final class SulfurasUpdatableItem extends UpdatableItem
 {
-    
+    protected function updateQuality(): void
+    {
+
+    }
 }
