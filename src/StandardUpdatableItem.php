@@ -19,6 +19,18 @@ final class StandardUpdatableItem
     ) {
     }
 
+    public static function create(
+        string $name,
+        int $sellIn,
+        int $quality
+    ): self {
+        return new self(
+            $name,
+            $sellIn,
+            $quality
+        );
+    }
+
     public function update(): self
     {
         $this->updateQuality();
