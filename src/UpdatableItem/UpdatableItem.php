@@ -6,10 +6,10 @@ namespace GildedRose\UpdatableItem;
 
 class UpdatableItem
 {
-    private const MINIMUM_ITEM_QUALITY = 0;
-    private const AGED_BRIE_ITEM_NAME = 'Aged Brie';
-    private const SULFURAS_ITEM_NAME = 'Sulfuras, Hand of Ragnaros';
-    private const BACKSTAGE_PASSES_ITEM_NAME = 'Backstage passes to a TAFKAL80ETC concert';
+    private const MINIMUM_QUALITY = 0;
+    private const AGED_BRIE_NAME = 'Aged Brie';
+    private const SULFURAS_NAME = 'Sulfuras, Hand of Ragnaros';
+    private const BACKSTAGE_PASSES_NAME = 'Backstage passes to a TAFKAL80ETC concert';
 
     protected function __construct(
         public string $name,
@@ -24,17 +24,17 @@ class UpdatableItem
         int $quality
     ): self {
         return match ($name) {
-            self::SULFURAS_ITEM_NAME => new SulfurasUpdatableItem(
+            self::SULFURAS_NAME => new SulfurasUpdatableItem(
                 $name,
                 $sellIn,
                 $quality
             ),
-            self::AGED_BRIE_ITEM_NAME => new AgedBrieUpdatableItem(
+            self::AGED_BRIE_NAME => new AgedBrieUpdatableItem(
                 $name,
                 $sellIn,
                 $quality
             ),
-            self::BACKSTAGE_PASSES_ITEM_NAME => new BackstagePassesUpdatableItem(
+            self::BACKSTAGE_PASSES_NAME => new BackstagePassesUpdatableItem(
                 $name,
                 $sellIn,
                 $quality
@@ -69,7 +69,7 @@ class UpdatableItem
 
     private function decreaseQuality(): void
     {
-        if ($this->quality <= self::MINIMUM_ITEM_QUALITY) {
+        if ($this->quality <= self::MINIMUM_QUALITY) {
             return;
         }
         

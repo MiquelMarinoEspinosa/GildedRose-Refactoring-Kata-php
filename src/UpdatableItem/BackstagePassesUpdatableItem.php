@@ -6,10 +6,12 @@ namespace GildedRose\UpdatableItem;
 
 final class BackstagePassesUpdatableItem extends UpdatableItem
 {
+    private const MINIMUM_QUALITY = 0;
+
     protected function updateQuality(): void
     {
         if ($this->sellIn < 0) {
-            $this->quality = 0;
+            $this->quality = self::MINIMUM_QUALITY;
             return;
         }
 
