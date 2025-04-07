@@ -329,3 +329,4 @@ Original coverage:
     - The goal is to remove all the item's specific logic from `UpdatableItem` and just leave the common code accross all the products
 - Pull down `updateQuality` `aged brie` business logic at `AgedBrieUpdatableItem` subclass
 - Replace if conditions at the `factory method` for `match` instruction
+- Remove `aged brie` at `updateQuality` unusued condition to `increaseQuality`

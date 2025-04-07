@@ -59,7 +59,7 @@ class UpdatableItem
 
     protected function updateQuality(): void
     {
-        if (self::AGED_BRIE_ITEM_NAME === $this->name || self::BACKSTAGE_PASSES_ITEM_NAME === $this->name) {
+        if (self::BACKSTAGE_PASSES_ITEM_NAME === $this->name) {
             $this->increaseQuality();
         } else {
             $this->decreaseQuality();
