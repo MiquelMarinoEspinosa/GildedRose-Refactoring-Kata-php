@@ -23,27 +23,23 @@ class UpdatableItem
         int $sellIn,
         int $quality
     ): self {
-        if (self::SULFURAS_ITEM_NAME === $name) {
-            return new SulfurasUpdatableItem(
+        return match ($name) {
+            self::SULFURAS_ITEM_NAME => new SulfurasUpdatableItem(
                 $name,
                 $sellIn,
                 $quality
-            );
-        }
-
-        if (self::AGED_BRIE_ITEM_NAME === $name) {
-            return new AgedBrieUpdatableItem(
+            ),
+            self::AGED_BRIE_ITEM_NAME => new AgedBrieUpdatableItem(
                 $name,
                 $sellIn,
                 $quality
-            );
-        }
-
-        return new self(
-            $name,
-            $sellIn,
-            $quality
-        );
+            ),
+            default => new self(
+                $name,
+                $sellIn,
+                $quality
+            )
+        };
     }
 
     public function update(): self

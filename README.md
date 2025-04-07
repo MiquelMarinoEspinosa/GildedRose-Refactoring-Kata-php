@@ -327,4 +327,5 @@ Original coverage:
 - Middleway refactor strategy clarification
     - At this point, the subclasses are being introduced to pull down the specific logic from this items from `UpdatableItem` generic class to the `subclasses`
     - The goal is to remove all the item's specific logic from `UpdatableItem` and just leave the common code accross all the products
-- Pull down `updateQuality` `aged brie` business logic at `AgedBrieUpdatableITem` subclass
+- Pull down `updateQuality` `aged brie` business logic at `AgedBrieUpdatableItem` subclass
+- Replace if conditions at the `factory method` for `match` instruction
