@@ -320,3 +320,4 @@ Original coverage:
 - Revert `StandardUpdatableItem` name change to `UpdatableItem` again for the sake of clarity
 - Change `UpdatableItem` construct method to `protected` to force clients to use the factory method to instantiate the class
 - Create a new folder to place the `UpdatableItem` related code
+- Create a new class `SulfurasUpdatableItem` which extends from `UpdatableItem` and instanciate it at the factory method

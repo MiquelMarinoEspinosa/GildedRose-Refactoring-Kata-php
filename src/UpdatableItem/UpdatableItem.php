@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GildedRose\UpdatableItem;
 
-final class UpdatableItem
+class UpdatableItem
 {
     private const MINIMUM_ITEM_QUALITY = 0;
     private const MAXIMUM_ITEM_QUALITY = 50;
@@ -24,6 +24,14 @@ final class UpdatableItem
         int $sellIn,
         int $quality
     ): self {
+        if (self::SULFURAS_ITEM_NAME === $name) {
+            return new SulfurasUpdatableItem(
+                $name,
+                $sellIn,
+                $quality
+            );
+        }
+
         return new self(
             $name,
             $sellIn,
