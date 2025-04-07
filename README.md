@@ -324,3 +324,6 @@ Original coverage:
 - Change `updateQuality` method visibility to `protected` and pull down the `sulfuras` logic to the `SulfurasUpdatableItem`
 - Change `sellIn` method visibility to `protected` and pull down the `sulfuras` logic to the `SulfurasUpdatableItem`
 - Introduce `AgedBrieUpdatableItem` `UpdatableItem` subclass
+- Middleway refactor strategy clarification
+    - At this point, the subclasses are being introduced to pull down the specific logic from this items from `UpdatableItem` generic class to the `subclasses`
+    - The goal is to remove all the item's specific logic from `UpdatableItem` and just leave the common code accross all the products
