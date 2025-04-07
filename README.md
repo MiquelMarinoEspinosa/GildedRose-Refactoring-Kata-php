@@ -333,3 +333,4 @@ Original coverage:
 - Introduce `BackstagePassesUpdatableItem` subclass
 - Pull down `incrementQuality` logic from `UpdatableItem` superclass to `BackstagePassesUpdatableItem` subclass
 - Introduce `MINIMUM_QUALITY` constant at `BackstagePassesUpdatableItem` and rename `UpdatableItem` constants to remove `Item` word
+- refactor `decreaseQuality` inline method

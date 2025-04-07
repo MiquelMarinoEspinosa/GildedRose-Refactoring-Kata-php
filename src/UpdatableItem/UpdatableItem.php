@@ -64,16 +64,11 @@ class UpdatableItem
 
     protected function updateQuality(): void
     {
-        $this->decreaseQuality();   
-    }
-
-    private function decreaseQuality(): void
-    {
         if ($this->quality <= self::MINIMUM_QUALITY) {
             return;
         }
         
-        $this->quality = $this->quality - 1;
+        $this->quality = $this->quality - 1; 
     }
 
     protected function decreaseSellIn(): void
