@@ -10,6 +10,7 @@ class UpdatableItem
     private const AGED_BRIE_NAME = 'Aged Brie';
     private const SULFURAS_NAME = 'Sulfuras, Hand of Ragnaros';
     private const BACKSTAGE_PASSES_NAME = 'Backstage passes to a TAFKAL80ETC concert';
+    private const CONJURED_ITEM_NAME = 'Conjured';
 
     protected function __construct(
         public string $name,
@@ -68,7 +69,14 @@ class UpdatableItem
             return;
         }
         
-        $this->quality = $this->quality - 1; 
+        $this->quality = $this->quality - 1;
+
+        if (self::CONJURED_ITEM_NAME !== $this->name)
+        {
+            return;
+        }
+
+        $this->quality = $this->quality - 1;
     }
 
     protected function decreaseSellIn(): void

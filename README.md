@@ -344,4 +344,7 @@ Original coverage:
         - In this case niether the methods are abstact nor the `UpdatableItem` class, having the generic methods implementation for the not special cases
 - Next steps
     - Introduce `Conjured` updateble item logic using `TDD` strategy
-- Implements failing test for `Conjured` new item
+- TDD
+    - Implements failing test for `Conjured` new item
+    - Fix the test applying the mininmum changes
+        - The changes are directly added inline at the `updateQuality` `UpdatableItem` parent class with `Conjure` condition 
