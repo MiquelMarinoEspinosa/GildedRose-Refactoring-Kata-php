@@ -319,3 +319,4 @@ Original coverage:
 - Implement a `factory method` to create `StandardUpdatableItem` instances
 - Revert `StandardUpdatableItem` name change to `UpdatableItem` again for the sake of clarity
 - Change `UpdatableItem` construct method to `protected` to force clients to use the factory method to instantiate the class
+- Create a new folder to place the `UpdatableItem` related code

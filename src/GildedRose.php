@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace GildedRose;
 
+use GildedRose\UpdatableItem\UpdatableItem;
+
 final class GildedRose
 {
     /**
