@@ -34,6 +34,11 @@ class UpdatableItem
                 $sellIn,
                 $quality
             ),
+            self::BACKSTAGE_PASSES_ITEM_NAME => new BackstagePassesUpdatableItem(
+                $name,
+                $sellIn,
+                $quality
+            ),
             default => new self(
                 $name,
                 $sellIn,
