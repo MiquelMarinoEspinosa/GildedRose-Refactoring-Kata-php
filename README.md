@@ -357,3 +357,9 @@ Original coverage:
     - RED: add failing test when `Conjured` has minimum quality should not decrease
     - GREEN: apply fix copying safe guard from the parent class
     - BLUES: extract magic number into a constant
+
+- At this point the refactor can be considered finished. Notice that adding the `Conjured` item with the new architecture has been easy and its has not be needed to change the logic of the other logic making easy adding / removing items enhancing `Open close principle` as well as `Single responsability principle` :D
+- Ideas for further refactors
+    - Extract the `factory method` into a `factory class`
+    - Split the unit test by updatable item subclasses
+    - Identify common code which can be extracted somehow to the parent class to be reused
