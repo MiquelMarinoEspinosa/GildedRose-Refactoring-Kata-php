@@ -32,6 +32,14 @@ class UpdatableItem
             );
         }
 
+        if (self::AGED_BRIE_ITEM_NAME === $name) {
+            return new AgedBrieUpdatableItem(
+                $name,
+                $sellIn,
+                $quality
+            );
+        }
+
         return new self(
             $name,
             $sellIn,

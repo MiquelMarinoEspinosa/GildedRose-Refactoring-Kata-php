@@ -323,3 +323,4 @@ Original coverage:
 - Create a new class `SulfurasUpdatableItem` which extends from `UpdatableItem` and instanciate it at the factory method
 - Change `updateQuality` method visibility to `protected` and pull down the `sulfuras` logic to the `SulfurasUpdatableItem`
 - Change `sellIn` method visibility to `protected` and pull down the `sulfuras` logic to the `SulfurasUpdatableItem`
+- Introduce `AgedBrieUpdatableItem` `UpdatableItem` subclass
