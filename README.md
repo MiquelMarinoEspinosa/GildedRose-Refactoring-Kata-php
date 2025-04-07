@@ -351,3 +351,4 @@ Original coverage:
     - BLUE: Add `Conjured` new subclass and pull down its logic from the parent class
         - Introduce `ConjuredUpdatableItem` subclass
         - Pull down its logic from the parent class
+- Fix `sellIn` method wrong name to `hasNotPassed`

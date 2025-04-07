@@ -59,7 +59,7 @@ class UpdatableItem
 
         $this->decreaseSellIn();
     
-        if ($this->hasPassed()) {
+        if ($this->hasNotPassed()) {
             return $this;
         }
 
@@ -82,7 +82,7 @@ class UpdatableItem
         $this->sellIn = $this->sellIn - 1;
     }
 
-    private function hasPassed(): bool
+    private function hasNotPassed(): bool
     {
         return $this->sellIn >= 0;
     }
