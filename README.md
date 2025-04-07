@@ -146,3 +146,13 @@ ps.bat
 ```
 
 **Happy coding**!
+
+## Refactors
+The refactors have been implemented in 3 different branches. Check them out to see the solution proposal. The `README.md` has been updated in all branches with the followed steps
+
+- `refactor-add-test-coverage`
+    - Add unit test coverage to the initial implementation
+- `refactor-quick-wins`
+    - Refactor applying quick wins at the `GildedRose` class
+- `refactor-template-method`
+    - Refactor quick wins applying the `template method` design pattern
