@@ -331,3 +331,4 @@ Original coverage:
 - Replace if conditions at the `factory method` for `match` instruction
 - Remove `aged brie` at `updateQuality` unused condition to `increaseQuality`
 - Introduce `BackstagePassesUpdatableItem` subclass
+- Pull down `incrementQuality` logic from `UpdatableItem` superclass to `BackstagePassesUpdatableItem` subclass

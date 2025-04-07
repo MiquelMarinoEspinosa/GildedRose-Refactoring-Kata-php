@@ -64,34 +64,7 @@ class UpdatableItem
 
     protected function updateQuality(): void
     {
-        if (self::BACKSTAGE_PASSES_ITEM_NAME === $this->name) {
-            $this->increaseQuality();
-        } else {
-            $this->decreaseQuality();
-        }
-    }
-
-
-    private function increaseQuality(): void
-    {
-        if (self::BACKSTAGE_PASSES_ITEM_NAME === $this->name && $this->sellIn < 0) {
-            $this->quality = self::MINIMUM_ITEM_QUALITY;
-            return;
-        }
-
-        $this->quality = $this->quality + 1;
-        
-        if ($this->sellIn >= 11) {
-            return;
-        }
-
-        $this->quality = $this->quality + 1;
-
-        if ($this->sellIn >= 6) {
-            return;
-        }
-        
-        $this->quality = $this->quality + 1;
+        $this->decreaseQuality();   
     }
 
     private function decreaseQuality(): void
