@@ -352,3 +352,4 @@ Original coverage:
         - Introduce `ConjuredUpdatableItem` subclass
         - Pull down its logic from the parent class
 - Fix `sellIn` method wrong name to `hasNotPassed`
+- Add extra unit test to confirm that the `Conjured` item decreased twice when the item has passed

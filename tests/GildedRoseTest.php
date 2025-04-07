@@ -181,6 +181,14 @@ final class GildedRoseTest extends TestCase
                 'expectedItemName' => self::CONJURED_ITEM_NAME,
                 'expectedItemSellIn' => 0,
                 'expectedItemQuality' => self::MINIMUM_ITEM_QUALITY
+            ],
+            'conjured item with sellIn has passed should quality decrease 4' => [
+                'currentItemName' => self::CONJURED_ITEM_NAME,
+                'currentItemSellIn' => 0,
+                'currentItemQuality' => 4,
+                'expectedItemName' => self::CONJURED_ITEM_NAME,
+                'expectedItemSellIn' => -1,
+                'expectedItemQuality' => self::MINIMUM_ITEM_QUALITY
             ]
         ];
     }
