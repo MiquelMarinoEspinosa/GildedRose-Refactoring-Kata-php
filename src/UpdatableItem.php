@@ -12,7 +12,7 @@ final class UpdatableItem
     private const SULFURAS_ITEM_NAME = 'Sulfuras, Hand of Ragnaros';
     private const BACKSTAGE_PASSES_ITEM_NAME = 'Backstage passes to a TAFKAL80ETC concert';
 
-    public function __construct(
+    protected function __construct(
         public string $name,
         public int $sellIn,
         public int $quality
