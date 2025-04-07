@@ -335,3 +335,12 @@ Original coverage:
 - Introduce `MINIMUM_QUALITY` constant at `BackstagePassesUpdatableItem` and rename `UpdatableItem` constants to remove `Item` word
 - refactor `decreaseQuality` inline method
 - refactor extract `sellIn` check logic into a new method for the sake of increasing readability
+- At this point the refactor can be considered finished
+    - The `template method pattern` has been applied for the refactor
+    - The template method is `update` at the `UpdatableItem`
+    - The override methods called at the template method by the subclasses are
+        - `updateQuality` overrided by all subclasses
+        - `decreaseSellIn` just overrided by `SulfurasUpdatableItem`
+        - In this case niether the methods are abstact nor the `UpdatableItem` class, having the generic methods implementation for the not special cases
+- Next steps
+    - Introduce `Conjured` updateble item logic using `TDD` technic
