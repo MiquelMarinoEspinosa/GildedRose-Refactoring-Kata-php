@@ -7,7 +7,6 @@ namespace GildedRose\UpdatableItem;
 class UpdatableItem
 {
     private const MINIMUM_ITEM_QUALITY = 0;
-    private const MAXIMUM_ITEM_QUALITY = 50;
     private const AGED_BRIE_ITEM_NAME = 'Aged Brie';
     private const SULFURAS_ITEM_NAME = 'Sulfuras, Hand of Ragnaros';
     private const BACKSTAGE_PASSES_ITEM_NAME = 'Backstage passes to a TAFKAL80ETC concert';
@@ -79,15 +78,7 @@ class UpdatableItem
             return;
         }
 
-        if ($this->quality >= self::MAXIMUM_ITEM_QUALITY) {
-            return;
-        }
-
         $this->quality = $this->quality + 1;
-        
-        if($this->name !== self::BACKSTAGE_PASSES_ITEM_NAME) {
-            return;
-        }
         
         if ($this->sellIn >= 11) {
             return;
