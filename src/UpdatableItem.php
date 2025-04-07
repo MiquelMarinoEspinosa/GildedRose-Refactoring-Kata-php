@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GildedRose;
 
-final class StandardUpdatableItem
+final class UpdatableItem
 {
     private const MINIMUM_ITEM_QUALITY = 0;
     private const MAXIMUM_ITEM_QUALITY = 50;

@@ -317,3 +317,4 @@ Original coverage:
 - Return the `UpdatableItem` once updated and remove `Item` word in `UpdatableItem methods`
 - Rename `UpadtableItem` to `StandardUpdatableItem` since some logic will be reused accross to items which does not have special logic, this way a new class will not be created to cover the generic update logic
 - Implement a `factory method` to create `StandardUpdatableItem` instances
+- Revert `StandardUpdatableItem` name change to `UpdatableItem` again for the sake of clarity
