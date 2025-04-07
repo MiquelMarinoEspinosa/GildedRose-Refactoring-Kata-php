@@ -15,6 +15,7 @@ final class GildedRoseTest extends TestCase
     private const AGED_BRIE_ITEM_NAME = 'Aged Brie';
     private const SULFURAS_ITEM_NAME = 'Sulfuras, Hand of Ragnaros';
     private const BACKSTAGE_PASSES_ITEM_NAME = 'Backstage passes to a TAFKAL80ETC concert';
+    private const CONJURED_ITEM_NAME = 'Conjured';
     private const MINIMUM_ITEM_QUALITY = 0;
     private const MAXIMUM_ITEM_QUALITY = 50;
     private const SULFURAS_ITEM_QUALITY = 80;
@@ -171,6 +172,14 @@ final class GildedRoseTest extends TestCase
                 'currentItemQuality' => 30,
                 'expectedItemName' => self::BACKSTAGE_PASSES_ITEM_NAME,
                 'expectedItemSellIn' => -1,
+                'expectedItemQuality' => self::MINIMUM_ITEM_QUALITY
+            ],
+            'conjured item with sellIn has not passed should quality decrease 2' => [
+                'currentItemName' => self::CONJURED_ITEM_NAME,
+                'currentItemSellIn' => 1,
+                'currentItemQuality' => 2,
+                'expectedItemName' => self::CONJURED_ITEM_NAME,
+                'expectedItemSellIn' => 0,
                 'expectedItemQuality' => self::MINIMUM_ITEM_QUALITY
             ]
         ];

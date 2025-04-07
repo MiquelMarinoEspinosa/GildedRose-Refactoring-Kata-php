@@ -343,4 +343,5 @@ Original coverage:
         - `decreaseSellIn` just overrided by `SulfurasUpdatableItem`
         - In this case niether the methods are abstact nor the `UpdatableItem` class, having the generic methods implementation for the not special cases
 - Next steps
-    - Introduce `Conjured` updateble item logic using `TDD` technic
+    - Introduce `Conjured` updateble item logic using `TDD` strategy
+- Implements failing test for `Conjured` new item
