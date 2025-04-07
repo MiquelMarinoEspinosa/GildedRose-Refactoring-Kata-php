@@ -10,4 +10,9 @@ final class SulfurasUpdatableItem extends UpdatableItem
     {
 
     }
+
+    protected function decreaseSellIn(): void
+    {
+        
+    }
 }

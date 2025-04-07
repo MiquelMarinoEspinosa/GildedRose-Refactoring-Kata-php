@@ -321,4 +321,5 @@ Original coverage:
 - Change `UpdatableItem` construct method to `protected` to force clients to use the factory method to instantiate the class
 - Create a new folder to place the `UpdatableItem` related code
 - Create a new class `SulfurasUpdatableItem` which extends from `UpdatableItem` and instanciate it at the factory method
-- Change `update` method visibility to `protected` and pull down the `sulfuras` logic to the `SulfurasUpdatableItem`
+- Change `updateQuality` method visibility to `protected` and pull down the `sulfuras` logic to the `SulfurasUpdatableItem`
+- Change `sellIn` method visibility to `protected` and pull down the `sulfuras` logic to the `SulfurasUpdatableItem`

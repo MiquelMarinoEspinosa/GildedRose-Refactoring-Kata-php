@@ -103,12 +103,8 @@ class UpdatableItem
         $this->quality = $this->quality - 1;
     }
 
-    private function decreaseSellIn(): void
+    protected function decreaseSellIn(): void
     {
-        if (self::SULFURAS_ITEM_NAME === $this->name) {
-            return;
-        }
-        
         $this->sellIn = $this->sellIn - 1;
     }
 }
