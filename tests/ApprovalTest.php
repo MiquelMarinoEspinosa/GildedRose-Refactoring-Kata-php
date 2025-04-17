@@ -21,9 +21,19 @@ use ApprovalTests\Approvals;
 class ApprovalTest extends TestCase
 {
 
-    public function testFoo(): void
+    public function testListItems(): void
     {
-        $items = [new Item('foo', 0, 0)];
+        $items = [
+            new Item('foo', 0, 0),
+            new Item('foo', 0, 1),
+            new Item('Aged Brie', 0, 1),
+            new Item('Backstage passes to a TAFKAL80ETC concert', 0, 1),
+            new Item('foo', 0, 2),
+            new Item('Aged Brie', 0, 50),
+            new Item('Aged Brie', 11, 48),
+            new Item('Backstage passes to a TAFKAL80ETC concert', 10, 48),
+            new Item('Backstage passes to a TAFKAL80ETC concert', 5, 48),
+        ];
         $app = new GildedRose($items);
         $app->updateQuality();
 
